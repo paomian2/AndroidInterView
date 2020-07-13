@@ -1,6 +1,5 @@
 package com.linxz.DataStructure.Tree;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -14,6 +13,8 @@ import java.util.Stack;
  *      E有可比性，所以要继承Comparable
  *
  *      局限性：最差的情况下变成普通链表一样，递归很消耗性能
+ *
+ *      时间复杂度 O(h)  平均O(logn) 最差O(n)  全部结点都只有右结点的时候退化成单链表的结构
  */
 public class BST<E extends Comparable<E>> {
 
