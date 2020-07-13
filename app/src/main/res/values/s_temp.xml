@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BunnyTouch</string>
+
+    <string name="user_name">net.bunnytouch</string>
+    <string name="title_activity_cache" translatable="false">CacheActivity</string>
+
+    <!-- WelcomeActivity -->
+    <string name="run_bt">Çalıştırmak</string>
+    <string name="auto_run_cb">Otomatik Çalıştır (5 saniye bekleyin)</string>
+
+    <!-- Date time format -->
+    <string name="standard_y_m_d_h_m_s_date_format">yyyy-AA-ggSS: dd: ss</string>
+    <string name="standard_y_m_d_date_format">yyyy-AA-gg</string>
+    <string name="standard_h_m_s_date_format">SS: dd: ss</string>
+    <string name="standard_ee_date_format">EEE</string>
+    <string name="standard_m_d_y_h_m_s_date_format">AA-gg-yyyy SS: dd: ss</string>
+    <string name="standard_m_d_y_date_format">AA-gg-yyyy</string>
+    <string name="standard_down_timer_format" formatted="false">% s gün% s saat% s dakika% s
+        saniye
+    </string>
+    <string name="standard_up_timer_format" formatted="false">% s gün% s saat% s dakika% s saniye
+    </string>
+
+    <!-- Layout parse error -->
+    <string name="error_layout_stream_null">Düzen akışı boş!!</string>
+    <string name="error_layout_parse_failed">Düzen ayrıştırılamadı!!</string>
+    <string name="error_layout_back_bt">Geri</string>
+
+
+
+    <!--strings-->
+
+    <!--<string name="app_name">BunnyTouch</string>-->
+    <!--<string name="user_name">net.bunnytouch</string>-->
+    <!--<string name="title_activity_cache" translatable="false">CacheActivity</string>-->
+
+    <!-- WelcomeActivity -->
+    <!--<string name="run_bt">Run</string>-->
+    <!--<string name="auto_run_cb">Auto Run(Wait 5s)</string>-->
+
+    <!-- Date time format -->
+    <!--<string name="standard_y_m_d_h_m_s_date_format">yyyy-MM-dd HH:mm:ss</string>-->
+    <!--<string name="standard_y_m_d_date_format">yyyy-MM-dd</string>-->
+    <!--<string name="standard_h_m_s_date_format">HH:mm:ss</string>-->
+    <!--<string name="standard_ee_date_format">EEE</string>-->
+    <!--<string name="standard_m_d_y_h_m_s_date_format">MM-dd-yyyy HH:mm:ss</string>-->
+    <!--<string name="standard_m_d_y_date_format">MM-dd-yyyy</string>-->
+    <!--<string name="standard_down_timer_format" formatted="false">%s days %s hours %s minutes %s-->
+    <!--seconds-->
+    <!--</string>-->
+    <!--<string name="standard_up_timer_format" formatted="false">%s days %s hours %s minutes %s-->
+    <!--seconds-->
+    <!--</string>-->
+
+    <!-- Layout parse error -->
+    <!--<string name="error_layout_stream_null">Layout stream is null!!</string>-->
+    <!--<string name="error_layout_parse_failed">Layout parse failed!!</string>-->
+    <!--<string name="error_layout_back_bt">Back</string>-->
+
+    <!-- Not authorized cacheactivity_layout -->
+    <string name="authorize_close_button">Close</string>
+    <string name="authorize_warn_text">This machine not authorized!!</string>
+    <string name="title_activity_image" translatable="false">ImageActivity</string>
+    <string name="title_activity_video" translatable="false">VideoActivity</string>
+
+    <string name="title_activity_screen_saver">ScreenSaverActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+
+    <string name="action_settings">Settings</string>
+    <string name="intro_text">Touch to focus, and press the blue camera button to take photos. For
+        more help, click Online help from Settings. Open Camera is completely free. If you like this
+        app, please consider buying my donate app :) (see link in Settings, or Online
+        help).\n\nPrivacy Policy: Location permission is required for geotagging, but this is
+        disabled by default. If enabled, your location is encoded in the saved files (and it is only
+        used for this purpose).\n\n(This message won\'t show again.)
+    </string>
+    <string name="intro_ok">OK (This message won\'t show again)</string>
+
+    <string name="preference_category_camera_effects">Camera Effects</string>
+    <string name="preference_auto_stabilise">Auto-stabilise</string>
+    <string name="preference_auto_stabilise_summary">Images will be rotated so they are
+        automatically level (photos only) (slower to take photos, and may fail on devices with too
+        low memory)
+    </string>
+    <string name="preference_color_effect">Apply a color effect</string>
+    <string name="preference_color_effect_summary">Applies the selected color effect to the photo
+    </string>
+    <string name="preference_scene_mode">Apply a scene mode</string>
+    <string name="preference_scene_mode_summary">Optimise the photo for different scenes</string>
+    <string name="preference_white_balance">Set the white balance</string>
+    <string name="preference_white_balance_summary">Choose a setting to adjust the white balance
+    </string>
+    <string name="preference_iso">Set the ISO</string>
+    <string name="preference_iso_summary">A higher value means more sensitive to light (may not work
+        on some devices)
+    </string>
+    <string name="preference_exposure">Set the exposure compensation</string>
+    <string name="preference_exposure_summary">Set to 0 for the default exposure compensation.
+    </string>
+    <string name="preference_face_detection">Face detection</string>
+    <string name="preference_face_detection_summary">Use face detection instead of focus areas.
+    </string>
+
+    <string name="preference_category_camera_controls">Camera Controls</string>
+    <string name="preference_timer">Timer</string>
+    <string name="preference_timer_summary">Set a timer for the camera</string>
+    <string name="preference_timer_beep">Timer beep</string>
+    <string name="preference_timer_beep_summary">Beep when timer is counting down or for burst mode
+        delay
+    </string>
+    <string name="preference_burst_mode">Burst mode</string>
+    <string name="preference_burst_mode_summary">Take multiple photos in succession</string>
+    <string name="preference_burst_interval">Burst mode interval</string>
+    <string name="preference_burst_interval_summary">Delay (if any) between taking photos in burst
+        mode
+    </string>
+    <string name="preference_screen_camera_controls_more">More camera controls…</string>
+    <string name="preference_pause_preview">Pause after taking photo</string>
+    <string name="preference_pause_preview_summary">Pause the screen after taking a photo, with the
+        option to share or delete the photo
+    </string>
+    <string name="preference_shutter_sound">Shutter sound</string>
+    <string name="preference_shutter_sound_summary">Play a sound when taking a photo (requires
+        Android 4.2 or greater to disable)
+    </string>
+    <string name="preference_volume_keys">Volume keys</string>
+    <string name="preference_volume_keys_summary">Set behaviour for when volume keys are pressed
+    </string>
+    <string name="preference_screen_gui">On screen GUI…</string>
+    <string name="preference_preview_size">Preview size</string>
+    <string name="preference_preview_size_summary">How to choose the preview size</string>
+    <string name="preference_ui_placement">UI placement</string>
+    <string name="preference_ui_placement_summary">Whether to have a left-handed or right-handed
+        user interface
+    </string>
+    <string name="preference_save_location">Save location</string>
+    <string name="preference_save_location_summary">Name of folder to save the photo/video files in
+        (can also be a full path)
+    </string>
+    <string name="preference_show_zoom">Show zoom</string>
+    <string name="preference_show_zoom_summary">Display the current camera zoom level on screen
+        (when zoomed in)
+    </string>
+    <string name="preference_show_zoom_controls">Show zoom -/+ controls</string>
+    <string name="preference_show_zoom_controls_summary">Show the -/+ buttons for zoom control
+    </string>
+    <string name="preference_free_memory">Show free memory</string>
+    <string name="preference_free_memory_summary">Display the remaining device storage space on
+        screen
+    </string>
+    <string name="preference_show_angle">Show angle</string>
+    <string name="preference_show_angle_summary">Display the current device orientation angle on
+        screen
+    </string>
+    <string name="preference_show_angle_line">Show angle line</string>
+    <string name="preference_show_angle_line_summary">Display horizontal level line</string>
+    <string name="preference_show_geo_direction">Show compass direction</string>
+    <string name="preference_show_geo_direction_summary">Display the compass direction of the device
+        on screen
+    </string>
+    <string name="preference_grid">Show a grid</string>
+    <string name="preference_grid_summary">Display one of various grids</string>
+    <string name="preference_thumbnail_animation">Show thumbnail animation</string>
+    <string name="preference_thumbnail_animation_summary">Display moving thumbnail animation when
+        taking a photo
+    </string>
+    <string name="preference_max_brightness">Force maximum brightness</string>
+    <string name="preference_max_brightness_summary">Force screen display to be at maximum
+        brightness, rather than device default
+    </string>
+
+    <string name="preference_category_camera_quality">Photo and Video Settings</string>
+    <string name="preference_screen_camera_quality">Photo and video settings…</string>
+    <string name="preference_resolution">Camera resolution</string>
+    <string name="preference_resolution_summary">Set the resolution of photos taken by the camera
+    </string>
+    <string name="preference_quality">Image quality</string>
+    <string name="preference_quality_summary">Set the image quality of saved photo images
+        (recommended value is 90%%)
+    </string>
+    <string name="preference_location">Store location data (Geotagging)</string>
+    <string name="preference_location_summary">Store GPS location data in the photos</string>
+    <string name="video_quality">Video resolution</string>
+    <string name="video_quality_summary">Set the resolution of videos</string>
+    <string name="preference_force_video_4k">Force 4K UHD video (experimental)</string>
+    <string name="preference_force_video_4k_summary">Enable 3840x2160 resolution for video recording
+        on back camera - this will only work if your device supports it, and may crash if not!
+    </string>
+    <string name="preference_video_bitrate">Video bitrate (approx)</string>
+    <string name="preference_video_bitrate_summary">Set the approximate bitrate of videos (higher
+        means better quality, but takes up more disk space; may cause video recording to fail if
+        bitrate not supported)
+    </string>
+    <string name="preference_video_fps">Video frame rate (approx)</string>
+    <string name="preference_video_fps_summary">Set the frame rate (FPS) of videos (may be approx,
+        not guaranteed to be achieved, and may cause video recording to fail if frame rate not
+        supported)
+    </string>
+    <string name="preference_record_audio">Record audio</string>
+    <string name="preference_record_audio_summary">Record audio when recording video</string>
+    <string name="preference_record_audio_src">Audio source</string>
+    <string name="preference_record_audio_src_summary">Microphone to use for recording audio
+    </string>
+
+    <string name="preference_category_online">Misc</string>
+    <string name="preference_online_help">Online help</string>
+    <string name="preference_donate">Donate to support development</string>
+    <string name="preference_donate_summary">If you like this app, please consider making a
+        donation. You can do this by purchasing my "donation app" - click this option will open up
+        the page for my donation app. Thanks!
+    </string>
+    <string name="preference_about">About</string>
+    <string name="preference_about_summary">App and debug information</string>
+    <string name="about_ok">OK</string>
+    <string name="about_available">Available</string>
+    <string name="about_not_available">Not available</string>
+    <string name="about_copy_to_clipboard">Copy to clipboard</string>
+
+    <string name="take_photo">Take Photo</string>
+    <string name="gallery">Gallery</string>
+    <string name="exposure">Exposure</string>
+    <string name="exposure_lock">Exposure Lock</string>
+    <string name="focus_mode">Focus Mode</string>
+    <string name="flash_mode">Flash Mode</string>
+    <string name="switch_camera">Switch Camera</string>
+    <string name="switch_video">Switch Video</string>
+    <string name="trash">Delete Last Picture</string>
+    <string name="share">Share Photo</string>
+    <string name="title_activity_main_activity2">MainActivity2Activity</string>
+
+    <string name="hello_world">Hello world!</string>
+
+
+    <string name="start_recode">start recode</string>
+
+    <string name="usb_update_title">USB Update</string>
+    <string name="usb_update_body">Is upgrading, Please Later</string>
+
+    <string name="sign_get_camera_id_faile">Get Camera ID Fail</string>
+    <string name="sign_brush">brush</string>
+    <string name="sign_fountain">fountain</string>
+    <string name="sign_pen_tools">pen tool</string>
+    <string name="sign_save_success">Sign Save Success</string>
+    <string name="sign_delete_message">Do You Want To Delete Selected Image</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_bunny">BunnyActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="dialog_repair_top">A key repair service</string>
+    <string name="dialog_cleaning_top">A key cleaning</string>
+
+    <string name="gating_temperature_strangs">stranger</string>
+    <string name="gating_temperature_notopennfc">Swiping card detection is not enabled</string>
+    <string name="gating_temperature_befor">Pre-calibration temperature :</string>
+    <string name="gating_temperature_after">Post-calibration temperature :</string>
+    <string name="gating_temperature_mac">MCU internal temperature :</string>
+    <string name="gating_temperature_sensor">Sensor internal temperature :</string>
+    <string name="gating_init_text_signinfo">Please swipe your card or recognize your face</string>
+    <string name="gating_face_library_loaded">Face library loaded</string>
+    <string name="gating_face_library_not_activated">Device is not activated, please connect to
+        network and activate.
+    </string>
+    <string name="gating_open_door_nopermission">No permission, please contact the administrator.
+    </string>
+    <string name="gating_open_door_faceinbox">Please put face in frame.</string>
+    <string name="gating_open_door_welcome">Welcome</string>
+    <string name="gating_camera_not_support">Camera not supported</string>
+    <string name="gating_dialog_alert_title">hint</string>
+    <string name="gating_clean_localfacelib">Empty the local face recognition library?</string>
+    <string name="gating_yes">YES</string>
+    <string name="gating_no">NO</string>
+    <string name="gating_y_m_d">%1$d / %2$d / %3$d</string>
+    <string name="gating_temperature_normal">Temperature is normal at %1$s℃\nPASS</string>
+    <string name="gating_temperature_abnormal">Temperature is abnormal at %1$s℃\nSTOP</string>
+    <string name="gating_temperature_abnormallow">Hypothermia at %1$s℃\n remeasurement</string>
+    <string name="gating_temperature_normal_f">Temperature is normal at %1$s℉\nPASS</string>
+    <string name="gating_temperature_abnormal_f">Temperature is abnormal at %1$s℉\nSTOP</string>
+    <string name="gating_temperature_abnormallow_f">Hypothermia at %1$s℉\n remeasurement</string>
+    <string name="gating_face_toofar">Too far, please step forward</string>
+    <string name="gating_face_tooclose">Too close, please stand back</string>
+    <string name="monday_string">Monday</string>
+    <string name="tuesday_string">Tuesday</string>
+    <string name="wednesday_string">Wednesday</string>
+    <string name="thursday_string">Thursday</string>
+    <string name="friday_string">Friday</string>
+    <string name="saturday_string">Saturday</string>
+    <string name="sunday_string">Sunday</string>
+    <string name="the_content_program_empty">The content of the program is empty</string>
+
+    <string name="terminal_settings_terminal_id">Terminal ID :</string>
+    <string name="terminal_settings_terminal_name">Terminal name :</string>
+    <!-- 身份验证 -->
+    <string name="dialog_confirm">Ok</string>
+    <string name="dialog_cannel">Cannel</string>
+    <string name="dialog_verify">Administrator Verify</string>
+    <string name="dialog_administrator_prompt">Administrator Password :</string>
+    <string name="dialog_password_empty_prompt">Administrator Password Empty</string>
+    <string name="dialog_password_error_prompt">Incorrect password</string>
+    <string name="dialog_password_network_status">Network status :</string>
+    <string name="dialog_password_server_status">Server status :</string>
+    <string name="dialog_password_server_statuson">Connected</string>
+    <string name="dialog_password_server_statusoff">Disonnected</string>
+    <string name="dialog_password_current_theme">Current theme :</string>
+    <string name="dialog_password_current_loop">Current loop :</string>
+    <string name="dialog_password_current_break">Current break :</string>
+    <string name="dialog_password_empty_prompt_long">Enter password must be at least 6 characters!
+    </string>
+    <string name="dialog_password_bunnydemo_version">Bunnydaemon version number :</string>
+    <string name="dialog_password_bunnytouch_version">Bunnytouch version number :</string>
+    <string name="dialog_password_system_menu">System menu</string>
+    <string name="system_menu_network_configuration">Network configuration</string>
+    <string name="system_menu_terminal_settings">Terminal settings</string>
+    <string name="system_menu_terminal_deployment">Terminal deployment</string>
+    <string name="system_menu_system_setting">system settings</string>
+
+    <string name="gating_door_peopletoomore">There are too many people to pass</string>
+    <string name="gating_door_net_error">Connection failed, check network connection</string>
+    <string name="gating_door_accessinfo">Access records</string>
+    <string name="gating_door_accessname">Name</string>
+    <string name="gating_door_accesstype">Identity</string>
+    <string name="gating_door_accessimg">Passing images</string>
+    <string name="gating_door_accesstime">Passing time</string>
+    <string name="gating_door_accessorientation">In and out</string>
+    <string name="gating_door_accesstem">Temperature</string>
+    <string name="gating_door_accesstemstate">Temperature state</string>
+    <string name="gating_door_accesslocation">Location</string>
+    <string name="doorcontrol_permission_staff">Staff</string>
+    <string name="doorcontrol_permission_come_in">Come in</string>
+    <string name="doorcontrol_permission_go_out">Go out</string>
+    <string name="gating_door_accesstemnormal">normal</string>
+    <string name="gating_door_accesstemabnormal">abnormal</string>
+    <string name="gating_temperature_normal_new">%1$s %2$s℃\nPASS</string>
+    <string name="gating_temperature_abnormal_new">%1$s %2$s℃\nSTOP</string>
+    <string name="gating_temperature_normal_f_new">%1$s %2$s ℉\nPASS</string>
+    <string name="gating_temperature_abnormal_f_new">%1$s %2$s℉\nSTOP</string>
+
+
+</resources>

@@ -123,6 +123,49 @@ public class LinkedList<E> {
         return delNode.e;
     }
 
+    public boolean remove(E e){
+        if (size==0){
+            return false;
+        }
+        Node tempPrev = dummyHead;
+        boolean searchSuccess=false;
+        for (int i = 0; i < size; i++) {
+            if (e.equals(tempPrev.next)){
+                searchSuccess=true;
+                break;
+            }else{
+                tempPrev = tempPrev.next;
+            }
+        }
+
+        if (searchSuccess){
+            Node delNode=tempPrev.next;
+            tempPrev.next=delNode.next;
+            delNode.next=null;
+            size--;
+        }
+
+        return false;
+    }
+
+
+    //
+    public void removeElement(E e){
+        Node prev=dummyHead;
+        while (prev.next!=null){
+            if (prev.next.e.equals(e))
+                break;
+            prev=prev.next;
+        }
+
+        if (prev.next!=null){ //如果查询到结果的话，那么要删除的结点的前一个结点的子结点肯定不为null，也就要要删除的结点肯定不为空
+            Node delNode=prev.next;
+            prev.next=delNode.next;
+            delNode.next=null;
+            size--;
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

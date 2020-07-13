@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BunnyTouch</string>
+    <string name="user_name">net.bunnytouch</string>
+    <string name="title_activity_cache" translatable="false">CacheActivity</string>
+
+    <!-- WelcomeActivity -->
+    <string name="run_bt">ทำงาน</string>
+    <string name="auto_run_cb">ทำงานอัตโนมัติ (รอ 5 วิ)</string>
+
+    <!-- Date time format -->
+    <string name="standard_y_m_d_h_m_s_date_format">yyyy-MM-dd HH:mm:ss</string>
+    <string name="standard_y_m_d_date_format">yyyy-MM-dd</string>
+    <string name="standard_h_m_s_date_format">HH:mm:ss</string>
+    <string name="standard_ee_date_format">EEE</string>
+    <string name="standard_m_d_y_h_m_s_date_format">MM-dd-yyyy HH:mm:ss</string>
+    <string name="standard_m_d_y_date_format">MM-dd-yyyy</string>
+    <string name="standard_down_timer_format" formatted="false">%s days %s hours %s minutes %s seconds</string>
+    <string name="standard_up_timer_format" formatted="false">%s days %s hours %s minutes %s seconds</string>
+
+    <!-- Layout parse error -->
+    <string name="error_layout_stream_null">Layout stream is null!!</string>
+    <string name="error_layout_parse_failed">Layout parse failed!!</string>
+    <string name="error_layout_back_bt">กลับ</string>
+
+    <!-- Not authorized cacheactivity_layout -->
+    <string name="authorize_close_button">ปิด</string>
+    <string name="authorize_warn_text">เครื่องนี้ไม่ได้รับอนุญาติ!!</string>
+    <string name="title_activity_image" translatable="false">ImageActivity</string>
+    <string name="title_activity_video" translatable="false">VideoActivity</string>
+
+    <string name="title_activity_screen_saver">ScreenSaverActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+
+    <string name="action_settings">ตั้งค่า</string>
+    <string name="intro_text">แตะเพื่อโฟกัสแล้วกดปุ่มกล้องสีน้ำเงินเพื่อถ่ายรูป สำหรับความช่วยเหลือเพิ่มเติมให้คลิก Online Help จากการตั้งค่า เปิดกล้องฟรี หากคุณชอบแอพนี้โปรดพิจารณาการซื้อแอพบริจาคของฉัน :) (ดูลิงก์ในการตั้งค่าหรือ Online Help) \ n \ nPrivacy Policy: ต้องมีการอนุญาตตำแหน่งสำหรับการติดแท็กตำแหน่งทางภูมิศาสตร์ หากเปิดใช้งานตำแหน่งของคุณจะถูกเข้ารหัสในไฟล์ที่บันทึกไว้ (และใช้เพื่อจุดประสงค์นี้เท่านั้น) \ n \ n (ข้อความนี้จะไม่ปรากฏอีกครั้ง)</string>
+    <string name="intro_ok">ตกลง (ข้อความนี้จะไม่แสดงอีกครั้ง)</string>
+
+    <string name="preference_category_camera_effects">Camera Effects</string>
+    <string name="preference_auto_stabilise">Auto-stabilise</string>
+    <string name="preference_auto_stabilise_summary">รูปภาพจะถูกหมุนเพื่อให้อยู่ในระดับอัตโนมัติ (รูปภาพเท่านั้น) (ช้ากว่าในการถ่ายภาพและอาจล้มเหลวในอุปกรณ์ที่มีหน่วยความจำต่ำเกินไป)</string>
+    <string name="preference_color_effect">ใช้เอฟเฟกต์สี</string>
+    <string name="preference_color_effect_summary">ใช้เอฟเฟกต์สีที่เลือกกับรูปภาพ</string>
+    <string name="preference_scene_mode">ใช้โหมดฉาก</string>
+    <string name="preference_scene_mode_summary">ปรับภาพให้เหมาะสมกับฉากต่าง ๆ</string>
+    <string name="preference_white_balance">ตั้งค่าสมดุลแสงขาว</string>
+    <string name="preference_white_balance_summary">เลือกการตั้งค่าเพื่อปรับสมดุลสีขาว</string>
+    <string name="preference_iso">ตั้งค่า ISO</string>
+    <string name="preference_iso_summary">ค่าที่สูงขึ้นหมายถึงความไวต่อแสงมากขึ้น (อาจไม่สามารถใช้งานได้ในอุปกรณ์บางรุ่น)</string>
+    <string name="preference_exposure">ตั้งค่าชดเชยแสง</string>
+    <string name="preference_exposure_summary">ตั้งค่าเป็น 0 สำหรับการชดเชยแสงที่ตั้งไว้</string>
+    <string name="preference_face_detection">การตรวจจับใบหน้า</string>
+    <string name="preference_face_detection_summary">ใช้การตรวจจับใบหน้าแทนพื้นที่โฟกัส</string>
+
+    <string name="preference_category_camera_controls">การควบคุมกล้อง</string>
+    <string name="preference_timer">เครื่องจับเวลา</string>
+    <string name="preference_timer_summary">ตั้งเวลาสำหรับกล้อง</string>
+    <string name="preference_timer_beep">เสียงเตือนจับเวลา</string>
+    <string name="preference_timer_beep_summary">เสียงเตือนเมื่อตั้งเริ่มตั้งเวลานับถอยหลัง หรือสำหรับโหมดถ่ายภาพต่อเนื่องล่าช้า</string>
+    <string name="preference_burst_mode">โหมดถ่ายภาพต่อเนื่อง</string>
+    <string name="preference_burst_mode_summary">ถ่ายภาพหลายภาพติดต่อกัน</string>
+    <string name="preference_burst_interval">ช่วงโหมดถ่ายภาพต่อเนื่อง</string>
+    <string name="preference_burst_interval_summary">ล่าช้า (ถ้ามี) ระหว่างการถ่ายภาพในโหมดถ่ายต่อเนื่อง</string>
+    <string name="preference_screen_camera_controls_more">การควบคุมกล้องเพิ่มเติม ...
+    </string>
+    <string name="preference_pause_preview">หยุดชั่วคราวหลังจากถ่ายรูป</string>
+    <string name="preference_pause_preview_summary">หยุดหน้าจอชั่วคราวหลังจากถ่ายภาพพร้อมตัวเลือกในการแชร์หรือลบภาพถ่าย</string>
+    <string name="preference_shutter_sound">เสียงชัตเตอร์</string>
+    <string name="preference_shutter_sound_summary">เล่นเสียงเมื่อถ่ายภาพ (ต้องใช้ Android 4.2 ขึ้นไปเพื่อปิดการใช้งาน)</string>
+    <string name="preference_volume_keys">ปุ่มปรับระดับเสียง</string>
+    <string name="preference_volume_keys_summary">ตั้งค่าการทำงานเมื่อกดปุ่มปรับระดับเสียง</string>
+    <string name="preference_screen_gui">บนหน้าจอ GUI ...</string>
+    <string name="preference_preview_size">ขนาดตัวอย่าง</string>
+    <string name="preference_preview_size_summary">วิธีเลือกขนาดตัวอย่าง</string>
+    <string name="preference_ui_placement">ตำแหน่ง UI</string>
+    <string name="preference_ui_placement_summary">ไม่ว่าจะมีส่วนต่อประสานผู้ใช้ทางซ้ายหรือทางขวา</string>
+    <string name="preference_save_location">บันทึกตำแหน่ง</string>
+    <string name="preference_save_location_summary">ชื่อโฟลเดอร์ที่จะบันทึกไฟล์ภาพถ่าย / วิดีโอใน (อาจเป็นเส้นทางแบบเต็ม)</string>
+    <string name="preference_show_zoom">แสดงการซูม</string>
+    <string name="preference_show_zoom_summary">แสดงระดับการซูมกล้องปัจจุบันบนหน้าจอ (เมื่อซูมเข้า)</string>
+    <string name="preference_show_zoom_controls">แสดงการซูม - / + การควบคุม</string>
+    <string name="preference_show_zoom_controls_summary">แสดงปุ่ม - / + สำหรับการควบคุมการซูม</string>
+    <string name="preference_free_memory">แสดง Free Memory</string>
+    <string name="preference_free_memory_summary">แสดงพื้นที่เก็บข้อมูลอุปกรณ์ที่เหลือบนหน้าจอ</string>
+    <string name="preference_show_angle">แสดงมุม</string>
+    <string name="preference_show_angle_summary">แสดงมุมการวางแนวอุปกรณ์ปัจจุบันบนหน้าจอ</string>
+    <string name="preference_show_angle_line">แสดงเส้นมุม</string>
+    <string name="preference_show_angle_line_summary">แสดงเส้นระดับแนวนอน</string>
+    <string name="preference_show_geo_direction">แสดงทิศทางเข็มทิศ</string>
+    <string name="preference_show_geo_direction_summary">แสดงทิศทางเข็มทิศของอุปกรณ์บนหน้าจอ</string>
+    <string name="preference_grid">แสดงตาราง</string>
+    <string name="preference_grid_summary">แสดงหนึ่งใน Grid ต่างๆ</string>
+    <string name="preference_thumbnail_animation">แสดงภาพเคลื่อนไหวรูปขนาดย่อ</string>
+    <string name="preference_thumbnail_animation_summary">แสดงภาพเคลื่อนไหวรูปขนาดย่อที่เคลื่อนไหวเมื่อถ่ายภาพ</string>
+    <string name="preference_max_brightness">บังคับให้ความสว่างสูงสุด</string>
+    <string name="preference_max_brightness_summary">บังคับให้หน้าจอแสดงผลมีความสว่างสูงสุดแทนที่จะเป็นค่าเริ่มต้นของอุปกรณ์</string>
+
+    <string name="preference_category_camera_quality">การตั้งค่าภาพถ่ายและวิดีโอ</string>
+    <string name="preference_screen_camera_quality">การตั้งค่าภาพถ่ายและวิดีโอ ...</string>
+    <string name="preference_resolution">ความละเอียดกล้อง</string>
+    <string name="preference_resolution_summary">ตั้งความละเอียดของภาพถ่ายที่ถ่ายด้วยกล้อง</string>
+    <string name="preference_quality">คุณภาพของภาพ</string>
+    <string name="preference_quality_summary">ตั้งค่าคุณภาพของรูปภาพของรูปภาพที่บันทึก (ค่าที่แนะนำคือ 90 %%)</string>
+    <string name="preference_location">ข้อมูลสถานที่จัดเก็บ (ระบุตำแหน่งทางภูมิศาสตร์)</string>
+    <string name="preference_location_summary">จัดเก็บข้อมูลตำแหน่ง GPS ในภาพถ่าย</string>
+    <string name="video_quality">ความละเอียดวิดีโอ</string>
+    <string name="video_quality_summary">ตั้งความละเอียดของวิดีโอ</string>
+    <string name="preference_force_video_4k">บังคับวิดีโอ 4K UHD (ทดลอง)</string>
+    <string name="preference_force_video_4k_summary">เปิดใช้งานความละเอียด 3840x2160 สำหรับการบันทึกวิดีโอในกล้องด้านหลังซึ่งจะใช้งานได้เฉพาะในกรณีที่อุปกรณ์ของคุณรองรับและอาจมีปัญหาหากไม่รองรับ!</string>
+    <string name="preference_video_bitrate">BitRate ของวิดีโอ (โดยประมาณ)</string>
+    <string name="preference_video_bitrate_summary">ตั้งค่า BitRate โดยประมาณของวิดีโอ (สูงกว่าหมายถึงคุณภาพที่ดีขึ้น แต่ใช้พื้นที่ดิสก์มากขึ้นอาจทำให้การบันทึกวิดีโอล้มเหลวหากไม่รองรับบิตเรต)</string>
+    <string name="preference_video_fps">อัตราเฟรมวิดีโอ (โดยประมาณ)</string>
+    <string name="preference_video_fps_summary">ตั้งค่าอัตราเฟรม (FPS) ของวิดีโอ (อาจจะประมาณไม่รับประกันว่าจะบรรลุและอาจทำให้การบันทึกวิดีโอล้มเหลวหากไม่รองรับอัตราเฟรม)</string>
+    <string name="preference_record_audio">บันทึกเสียง</string>
+    <string name="preference_record_audio_summary">บันทึกเสียงเมื่อบันทึกวิดีโอ</string>
+    <string name="preference_record_audio_src">แหล่งกำเนิดเสียง</string>
+    <string name="preference_record_audio_src_summary">ไมโครโฟนที่ใช้สำหรับบันทึกเสียง</string>
+
+    <string name="preference_category_online">อื่น ๆ</string>
+    <string name="preference_online_help">Online help</string>
+    <string name="preference_donate">บริจาคเพื่อสนับสนุนการพัฒนา</string>
+    <string name="preference_donate_summary">หากคุณชอบแอพนี้โปรดลองทำการบริจาค คุณสามารถทำได้โดยซื้อ "Donate App" ของฉัน - คลิกตัวเลือกนี้จะเปิดหน้า My Donation App ขอบคุณ!</string>
+    <string name="preference_about">เกี่ยวกับ</string>
+    <string name="preference_about_summary">ข้อมูล App และ Debug</string>
+    <string name="about_ok">ตกลง</string>
+    <string name="about_available">Available</string>
+    <string name="about_not_available">Not available</string>
+    <string name="about_copy_to_clipboard">คัดลอกไปที่ Clipboard</string>
+
+    <string name="take_photo">ถ่ายภาพ</string>
+    <string name="gallery">Gallery</string>
+    <string name="exposure">Exposure</string>
+    <string name="exposure_lock">ล็อค Exposure</string>
+    <string name="focus_mode">โหมด Focus</string>
+    <string name="flash_mode">โหมด Flash</string>
+    <string name="switch_camera">สลับ Camera</string>
+    <string name="switch_video">สลับ Video</string>
+    <string name="trash">ลบรูปภาพสุดท้าย</string>
+    <string name="share">แชร์ รูปภาพ</string>
+    <string name="title_activity_main_activity2">MainActivity2Activity</string>
+
+    <string name="hello_world">สวัสดีชาวโลก!</string>
+
+
+    <string name="start_recode">เริ่ม recode</string>
+
+    <string name="usb_update_title">อัปเดต USB</string>
+    <string name="usb_update_body">กำลังอัปเกรด   โปรดภายหลัง</string>
+
+    <string name="sign_get_camera_id_faile">รับ Camera ID ล้มเหลว</string>
+    <string name="sign_brush">brush</string>
+    <string name="sign_fountain">fountain</string>
+    <string name="sign_pen_tools">pen tool</string>
+    <string name="sign_save_success">Sign Save Success</string>
+    <string name="sign_delete_message">คุณต้องการลบภาพที่เลือกหรือไม่</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">สวัสดี blank fragment</string>
+    <string name="title_activity_bunny">BunnyActivity</string>
+    <string name="navigation_drawer_open">เปิด navigation drawer</string>
+    <string name="navigation_drawer_close">ปิด navigation drawer</string>
+
+    <string name="dialog_repair_top">A key repair service</string>
+    <string name="dialog_cleaning_top">A key cleaning</string>
+
+    <string name="gating_temperature_strangs">stranger</string>
+    <string name="gating_temperature_befor">อุณหภูมิ ก่อนสอบเทียบ Pre-calibration :</string>
+    <string name="gating_temperature_after">อุณหภูมิ หลังสอบเทียบ Post-calibration :</string>
+    <string name="gating_temperature_mac">อุณหภูมิภายใน MCU:</string>
+    <string name="gating_temperature_sensor">เซ็นเซอร์อุณหภูมิภายใน:</string>
+    <string name="gating_init_text_signinfo">กรุณา รูด แตะ บัตรของคุณ หรือจดจำใบหน้าของคุณ</string>
+    <string name="gating_face_library_loaded">โหลด Face library แล้ว</string>
+    <string name="gating_face_library_not_activated">ไม่ได้เปิดใช้งานอุปกรณ์   โปรดเชื่อมต่อกับเครือข่ายและเริ่มใช้งาน </string>
+    <string name="gating_open_door_nopermission">ไม่ได้รับอนุญาตโปรดติดต่อผู้ดูแลระบบ </string>
+    <string name="gating_open_door_faceinbox">กรุณาใส่ใบหน้าในกรอบ </string>
+    <string name="gating_open_door_welcome">ยินดีต้อนรับ</string>
+    <string name="gating_camera_not_support">ไม่รองรับกล้อง</string>
+    <string name="gating_dialog_alert_title">hint</string>
+    <string name="gating_clean_localfacelib">ล้าง Local Face Recognition Library หรือไม่?</string>
+    <string name="gating_yes">YES</string>
+    <string name="gating_no">NO</string>
+    <string name="gating_y_m_d">%1$d / %2$d / %3$d</string>
+    <string name="gating_temperature_normal">อุณหภูมิปกติ %1$s℃\nPASS</string>
+    <string name="gating_temperature_abnormal">อุณหภูมิไม่ปกติ %1$s℃\nSTOP</string>
+    <string name="gating_temperature_abnormallow">ภาวะตัวเย็นเกินไป %1$s℃\n remeasurement</string>
+    <string name="gating_temperature_normal_f">Temperature is normal at %1$s℉\nPASS</string>
+    <string name="gating_temperature_abnormal_f">Temperature is abnormal at %1$s℉\nSTOP</string>
+    <string name="gating_temperature_abnormallow_f">Hypothermia at %1$s℉\n remeasurement</string>
+    <string name="gating_face_toofar">ไกลเกินไปโปรดก้าวไปข้างหน้า</string>
+    <string name="gating_face_tooclose">ใกล้เกินไป กรุณาขยับถอยหลัง</string>
+    <string name="monday_string">วันจันทร์</string>
+    <string name="tuesday_string">วันอังคาร</string>
+    <string name="wednesday_string">วันพุธ</string>
+    <string name="thursday_string">วันพฤหัสบดี</string>
+    <string name="friday_string">วันศุกร์</string>
+    <string name="saturday_string">วันเสาร์</string>
+    <string name="sunday_string">วันอาทิตย์</string>
+    <string name="the_content_program_empty">เนื้อหาของโปรแกรมว่างเปล่า</string>
+
+    <string name="terminal_settings_terminal_id">ID เทอร์มินัล:</string>
+    <string name="terminal_settings_terminal_name">ชื่อเทอร์มินัล:</string>
+    <!-- 身份验证 -->
+    <string name="dialog_confirm">ตกลง</string>
+    <string name="dialog_cannel">Cannel</string>
+    <string name="dialog_verify">ตรวจสอบ ผู้ดูแลระบบ</string>
+    <string name="dialog_administrator_prompt">รหัสผ่านผู้ดูแลระบบ:</string>
+    <string name="dialog_password_empty_prompt">รหัสผ่านผู้ดูแลระบบว่างเปล่า</string>
+    <string name="dialog_password_error_prompt">รหัสไม่ถูกต้อง</string>
+    <string name="dialog_password_network_status">สถานะเครือข่าย:</string>
+    <string name="dialog_password_server_status">สถานะเซิร์ฟเวอร์:</string>
+    <string name="dialog_password_server_statuson">เกี่ยวข้อง</string>
+    <string name="dialog_password_server_statusoff">Disonnected</string>
+    <string name="dialog_password_current_theme">Theme ปัจจุบัน:</string>
+    <string name="dialog_password_current_loop">Loop ปัจจุบัน:</string>
+    <string name="dialog_password_current_break">Break ปัจจุบัน:</string>
+    <string name="dialog_password_empty_prompt_long">รหัสผ่านจะต้องมีอย่างน้อย 6 ตัวอักษร!</string>
+    <string name="dialog_password_bunnydemo_version">หมายเลขเวอร์ชั่น Bunnydemo:</string>
+    <string name="dialog_password_bunnytouch_version">หมายเลขเวอร์ชั่นของ Bunnytouch:</string>
+    <string name="dialog_password_system_menu">เมนูระบบ</string>
+    <string name="system_menu_network_configuration">การกำหนดค่าเครือข่าย</string>
+    <string name="system_menu_terminal_settings">การตั้งค่าเทอร์มินัล</string>
+    <string name="system_menu_terminal_deployment">การปรับใช้เทอร์มินัล</string>
+    <string name="system_menu_system_setting">system settings</string>
+</resources>

@@ -45,6 +45,14 @@ public class ArrayStack<E> implements Stack<E> {
         return array.getCapacity();
     }
 
+    public void clear(){
+        boolean empty=isEmpty();
+        while (!empty){
+            pop();
+            empty=isEmpty();
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder sb=new StringBuilder();
@@ -73,9 +81,10 @@ public class ArrayStack<E> implements Stack<E> {
         System.out.println(arrayStack);
         System.out.println();
 
-
         System.out.println(arrayStack.getSize());
         System.out.println(arrayStack.getCapacity());
         System.out.println(arrayStack.peek());
+        arrayStack.clear();
+        System.out.println(arrayStack.isEmpty());
     }
 }
