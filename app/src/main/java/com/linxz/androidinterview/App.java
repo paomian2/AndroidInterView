@@ -1,6 +1,7 @@
 package com.linxz.androidinterview;
 
 import android.app.Application;
+import android.util.Log;
 
 /**
  * @author Linxz
@@ -16,5 +17,6 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         instance=this;
+        Log.d("TAG1","fdasfasf");
     }
 }

@@ -2,6 +2,8 @@ package com.linxz.androidinterview;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ComponentName;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -12,12 +14,15 @@ import android.widget.ImageView;
 
 import com.linxz.androidinterview.work.WorkRequest;
 
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.d("TAG1","MainActivity");
         final ImageView iv=findViewById(R.id.iv);
         iv.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
@@ -41,5 +46,29 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        findViewById(R.id.btnAuthLogin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String json="{\n" +
+                        "  \"launcherUser\": \"黑金刚\",\n" +
+                        "  \"userName\": \"访问成功\",\n" +
+                        "  \"token\": \"NoJSFFlMKbqpdhpMxxmhO109Lhl3e2Kj\",\n" +
+                        "  \"serviceModule\": \"1001\",\n" +
+                        "  \"biddingNumber\": \"WXjj20200720154518364173\",\n" +
+                        "  \"isHJG\": true\n" +
+                        "}\n" +
+                        "\n";
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                ComponentName componentName = new ComponentName("com.afor.formaintenance", "com.afor.formaintenance.activity.LaunchActivity");
+                intent.setComponent(componentName);
+                intent.putExtra("openParams", json);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
+
+
     }
 }

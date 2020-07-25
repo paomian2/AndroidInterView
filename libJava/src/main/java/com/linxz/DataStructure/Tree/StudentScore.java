@@ -30,6 +30,9 @@ public class StudentScore implements Comparable<StudentScore> {
     }
 
     public static void main(String[] args) {
+
+
+
         BST<StudentScore> studentScoreBSE=new BST<>();
 
         StudentScore score1=new StudentScore(41);

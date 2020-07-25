@@ -37,6 +37,13 @@ public class Array<E> {
         this(20);
     }
 
+    public Array(E[] aar){
+        data= (E[]) new Object[aar.length];
+        for (int i=0;i<aar.length;i++)
+            data[i]=aar[i];
+        size=aar.length;
+    }
+
     public int getSize() {
         return size;
     }
@@ -116,6 +123,14 @@ public class Array<E> {
         return this;
     }
 
+    /**
+     * 在最有一个位置添加元素
+     * */
+    public Array addLast(E e){
+        add(e);
+        return this;
+    }
+
     public Array addAll(Array<E> array) {
         if (array == null) {
             throw new NullPointerException("Array can not be null.");
@@ -191,6 +206,10 @@ public class Array<E> {
         return hasEle;
     }
 
+    public Array removeLast(){
+        return remove(size-1);
+    }
+
     public void clear() {
         for (int i = 0; i < size; i++) {
             data[i] = null;
@@ -224,6 +243,18 @@ public class Array<E> {
         return -1;
     }
 
+
+    /**
+     * 两个元素互换位置
+     * */
+    public void swap(int i,int j){
+        if (i<0 || i>=size || j<0 || j>=size)
+            throw new IllegalArgumentException("Index is illegal: i="+i+",j="+j+" arraySize="+size);
+        E t=data[i];
+        data[i]=data[j];
+        data[j]=t;
+    }
+
     public int count(E e){
         if (e == null) {
             throw new IllegalArgumentException("E can no be null.");
@@ -247,6 +278,7 @@ public class Array<E> {
         }
         return count;
     }
+
 
     /**
      * @deprecated replace with {@link Array#toNormalArray(Object[])}
