@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import com.linxz.androidinterview.work.WorkRequest;
 
 import java.util.HashMap;
+import java.util.Hashtable;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,15 +23,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d("TAG1","MainActivity");
-        final ImageView iv=findViewById(R.id.iv);
+        Log.d("TAG1", "MainActivity");
+        final ImageView iv = findViewById(R.id.iv);
         iv.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
             public boolean onPreDraw() {
-                int width=iv.getWidth();
-                int height=iv.getHeight();
-                Log.d("TAG","width:"+width);
-                Log.d("TAG","height:"+height);
+                int width = iv.getWidth();
+                int height = iv.getHeight();
+                Log.d("TAG", "width:" + width);
+                Log.d("TAG", "height:" + height);
                 return true;
             }
         });
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnAuthLogin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String json="{\n" +
+                String json = "{\n" +
                         "  \"launcherUser\": \"黑金刚\",\n" +
                         "  \"userName\": \"访问成功\",\n" +
                         "  \"token\": \"NoJSFFlMKbqpdhpMxxmhO109Lhl3e2Kj\",\n" +
@@ -67,8 +68,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
     }
+
+//        Integer a=1;
+//        a.hashCode();
+//
+//        Double d=1D;
+//        d.hashCode();
+       // Hashtable
+       // HashMap
+
 }
