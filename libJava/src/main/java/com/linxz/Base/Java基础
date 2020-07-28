@@ -1,0 +1,434 @@
+Java中char,short,int,long占几个字节和多少位
+byte:1个字节 8位 -128~127
+short ：2个字节 16位
+int ：4个字节 32位
+float：4个字节 32 位
+double ：8个字节 64位
+long：8个字节 64位
+char在java中是2个字节，java采用unicode，2个字节来表示一个字符
+
+Java中字母跟中文都使用Unicode编码，一个Unicode编码16位，一个字节是8位(1byte=8bit),所以一个Unicode码占两个字节。
+不过英文字母比较特殊，它源自于1字节8位的ASCII码，所以在Unicode编码中只使用了低8位也就是1字节来表示，高8位也可以用来表示，不使用高8位的话也没关系。
+String str = "w";
+System.out.println(str.getBytes().length);
+得到的是1字节。
+汉字完整使用了16位的Unicode编码；
+String str = "我";
+System.out.println(str.getBytes().length);
+得到的是2字节(根据编码确定)。(UTF-8：可能是2个，3个或者4个字节；GBK：2个；GB2312：2个)
+
+Java的位运算符详解实例——与（&）、非（~）、或（|）、异或（^）
+
+
+&(与运算符):
+两个操作数中位都为1，结果才为1，否则结果为0
+int a=129;
+int b=128;
+System.out.println(a&b);
+结果为:128
+     转二进制
+129 - - - - -> 10000001
+
+     转二进制
+128 - - - - -> 10000000
+
+两个操作数中位都为1，结果才为1，否则结果为0
+                         10进制
+129 & 128 - -> 10000000 - - - -> 128
+
+
+|(或运算符):
+两个位只要有一个为1，那么结果就是1，否则就为0
+int a=129;
+int b=128;
+System.out.println(a&b);
+结果为:129
+     转二进制
+129 - - - - -> 10000001
+
+     转二进制
+128 - - - - -> 10000000
+
+两个位只要有一个为1，那么结果就是1，否则就为0
+                         10进制
+129 & 128 - -> 10000001 - - - -> 128
+
+
+~(非运算符)
+在Java中，所有数据的表示方法都是以补码的形式表示，如果没有特殊说明，Java中的数据类型默认是int,int数据类型的长度是8位，一位是四个字节，就是32字节，32bit.
+int b=-1;
+System.out.println(~b);
+结果为:-2
+二进制：00000000 00000000 00000000 00000001
+取反为：11111111 11111111 11111111 11111110
+因为计算机存储的是补码，补码=反码+1，即11111111 11111111 11111111 11111110为补码
+转反码：11111111 11111111 11111111 11111101(补码-1)
+转原码：10000000 00000000 00000000 00000010(符号位不变)
+所以结果为:-2
+
+
+^(异或运算符):
+两个操作数的位中，相同则结果为0，不同则结果为1
+int a=15;
+int b=2;
+System.out.println(a^b);
+结果:13
+00000000 00000000 00000000 00001111(15)
+00000000 00000000 00000000 00000010
+两个操作数的位中，相同则结果为0，不同则结果为1
+00000000 00000000 00000000 00001101(13)
+使用场景:
+一组数据中只有一个数字出现了一次，其他所有数字都是成对出现的，请找出这个数字。
+        int a[] = {1, 2, 3, 4, 10, 4, 3, 2};
+        int temp=a[0];
+        for (int i=1; i < a.length; i++){
+            temp =  temp^a[i];
+        }
+        System.out.println(temp);
+结果为:5
+因为成对出现，所以自己^自己=0，只剩下单独的数字，0^任何数=任何数。
+拓展如果有两个单独的数字：遍历一层，寻找第一个单独数字的位置，然后用它将数组分成两个
+
+
+
+"=="和 equals 方法有什么区别:
+查看Object.equals源码：
+ public boolean equals(Object obj) {
+        return (this == obj);
+ }
+
+可以看到在Object类的equals方法中也是用的”==”来进行比较，所以在进行比较时它和”==”应该时等价。
+
+查看String.equals源码:
+    public boolean equals(Object anObject) {
+        if (this == anObject) {
+            return true;
+        }
+        if (anObject instanceof String) {
+            String anotherString = (String)anObject;
+            int n = length();
+            if (n == anotherString.length()) {
+                int i = 0;
+                while (n-- != 0) {
+                    if (charAt(i) != anotherString.charAt(i))
+                            return false;
+                    i++;
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+由代码可知如果String对象地址一样则表示相等，否则将字符逐个比较都一样那么也是相等。即:
+String a = new String(“abc”) ; String b = new String(“abc”); 也是相当的。
+
+
+
+hashCode() 和equals() 区别和作用
+hashCode() 的作用是获取哈希码，也称为散列码；它实际上是返回一个int整数。这个哈希码的作用是确定该对象在哈希表中的索引位置。
+hashCode相等并不一定对应的值就相当,有可能会出现哈希冲突的情况。
+如果不在类似于HashMap,HashSet,HashTable这种类定义对应的"类对应的散列表"则hashCode于和equals没有半毛钱关系。
+哈希表:f(t)=哈希函数(key)。哈希算法不合理会导致两个同样的key得到同一个值，这个值可能就是类存储的地址位置。
+
+
+
+String str = new String("abc"); 创建了几个对象：
+一个或者两个。如果常量池中没有，则创建两个对象，一个是new String对象，一个是常量池"abc"的对象。
+String str = “abc”; 创建了几个对象？0个 或者 1个
+
+
+Comparable和Comparator的区别：
+Comparable是一个接口,抽象方法int compareTo(T object)，是一个内置的比较。比如:
+ArrayList<People> arrayList = new ArrayList<>();
+Collections.sort(arrayList);//对People这么直接排序的话，对应的People一定要实现Comparable接口。
+但是有的情况下我不想动这个People类怎么办呢？Comparator来实现。
+(1)比较者大于被比较者（也就是compareTo方法里面的对象），那么返回正整数
+(2)比较者等于被比较者，那么返回0
+(3)比较者小于被比较者，那么返回负整数
+
+Comparator是一个接口，抽象方法int compare(T o1, T o2)，可外置可内置比较。比如:
+ArrayList<People> arrayList = new ArrayList<>();
+Collections.sort(arrayList, new Comparator<People>() {
+           @Override
+           public int compare(People o1, People o2) {
+               return o2.age()-o1.age());
+           }
+       });
+
+
+
+ArrayList和LinkedList的区别以及优缺点:
+ArrayList是数组:每个元素在内存中存储地址是连续的,所以根据下指标查询很快
+LinkedList,底层是双向链表的结构,查询相对慢，但插入删除操作快
+
+
+HashMap如何处理hash冲突(重复)问题
+使用数组+链表的形式，Node<K,V>[] table,hashCode重复的话直接在table[hashCode]这个链表中往后添加结点即可。
+https://www.jianshu.com/p/dde9b12343c1
+
+
+什么是值传递和引用传递
+值传递是对基本型变量而言的，传递的是该变量的一个副本，改变副本不影响原变量。
+如:
+    public static void main(String[] args) {
+        int a=15;
+        System.out.println(a);
+    }
+
+    private static void fix(int a){
+        a=10;
+    }
+
+结果为:15
+
+引用传递一般是对于对象型变量而言的，传递的是该对象地址的一个副本，并不是原对象本身。一般认为，Java 内的传递都是值传递，Java 中实例对象的传递是引用传递。
+如：
+public static void main(String[] args) {
+        Person a=new Person(15);
+        System.out.println(a.age);
+    }
+
+    private static void fix(Person a){
+        a.age=10;
+    }
+
+结果为:10
+(值得注意的一个点是Java的String 也是值传递)
+
+
+是否可以在 static 环境中访问非 static 变量
+不可以。static当类被Java虚拟机载入的时候，会对static变量进行初始化，这个时候还没有创建对象。而非static变量只能通过对象去访问它。
+
+
+Java 中的方法覆盖（Overriding）和方法重载（Overloading）是什么意思
+重载：方法名称一样，参数不一样(数量或者类型)
+覆盖：子类覆盖了父类的方法(一模一样的方法)
+
+
+Java 支持多继承么
+类不支持多继承，只支持单继承。接口可以多继承，一个接口可以继承多个父类接口。
+interface School extends Person,Stu{}
+
+
+接口和抽象类的区别是什么
+从设计层面来说，抽象是对类的抽象，是一种模板设计，接口是行为的抽象，是一种行为的规范。
+相同点:都支持抽象的方法
+不同点:接口不支持非抽象的方法
+类可以只能继承一个抽象类，但可以实现多个接口
+接口中声明的变量默认都是final修饰的,抽象类可以是final跟非final
+接口中的抽象方法默认是public,抽象类可以是任意的
+
+
+final, finally, finalize 的区别
+final: 用于声明属性,方法和类, 分别表示属性不可变, 方法不可覆盖, 类不可继承.
+finally:是异常处理语句结构的一部分，表示总是执行.try{}catch{}finally{}
+finalize:是Object类的一个方法，在垃圾收集器执行的时候会调用被回收对象的此方法，可以覆盖此方法提供垃圾收集时的其他资源回收，
+例如关闭文件等. JVM不保证此方法总被调用.
+
+
+String和StringBuilder、StringBuffer的区别
+String 是 final 类，不能被继承。对于已经存在的 Stirng 对象，修改它的值，就是重新创建一个对象
+StringBuffer 是一个类似于 String 的字符串缓冲区，使用 append() 方法修改 Stringbuffer 的值，使用 toString() 方法转换为字符串，是线程安全的
+StringBuilder 用来替代于 StringBuffer，StringBuilder 是非线程安全的，速度更快
+
+
+匿名内部类简单介绍
+是内部类的简化写法。它的本质是一个带具体实现的父类或者父接口的匿名的子类对象。
+大白话: 其实就是一个类或者接口的子类对象/实现类对象,只不过这个类的对象没有名字,就如他的叫法,匿名.
+如:
+普通类
+public class Student {
+    private int age;
+    public int getAge(){
+        return age;
+    }
+    public void play(){}
+}
+抽象类
+public abstract class AbsStudent {
+    private int age;
+    public int getAge(){
+        return age;
+    }
+    public abstract void play();
+}
+接口
+public interface StudentInterface {
+    int age=20;
+    void play();
+    int getAge();
+}
+实现内部类方式:
+public class StringTestMain {
+    public static void main(String[] args) {
+         //正常类
+        int age=execute(new Student() {
+            @Override
+            public void play() {
+            }
+        });
+        //抽象类
+        int age1=execute1(new AbsStudent() {
+            @Override
+            public void play() {
+            }
+        });
+        //接口
+        int age2=execute2(new StudentInterface() {
+            @Override
+            public void play() {
+            }
+            @Override
+            public int getAge() {
+                return age;
+            }
+        });
+    }
+
+    private static int  execute(Student student){
+        return student.getAge();
+    }
+    private static int  execute1(AbsStudent student){
+        return student.getAge();
+    }
+    private static int  execute2(StudentInterface student){
+        return student.getAge();
+    }
+}
+
+
+前提
+匿名内部类必须继承一个父类或者实现一个父接口。 即:new后面就写要继承的那个类名或者实现的接口名.
+
+优点:
+写起来方便,不用去声明一个类。
+可以访问外部类的成员变量，即使是 private 的，也可以访问。
+如:
+public class  MyActivity extends Activity {
+    private  int  age = 14;
+    String name = "zhangsan";
+
+     public void onCreate() {
+          ThreadPoolUtil.execRunnable( new Runnable() { // 去线程池中被执行
+                   public  void run() {
+                        Thread.sleep( 1000 * 60 ); //休眠 1 分钟
+                        String info = "name:" + name + "; age:" + age;//访问外部类成员变量
+                        Log.i("TestInfo", info);
+                        ....
+                   }
+         } );
+    }
+}
+然而，之所以你写起来方便，是因为本应该你去做的事情，编译器 ( javac ) 帮你去做了，编译器在把 java 代码代码编译成 class 文件的时候帮你做的。
+具体做的事情如下：
+1. 它会生成一个类，名字大概是 MyActivity$1，或 MyActivity$2 之类的，这个生成的类会实现Runnable接口, 会包含 new Runnable(){..} 的 {...} 里面部分的代码。
+2. 它会有一个成员变量，类型是 MyActivity 类型，当这个类的实例被构造时，会会作为构造方法的参数传递进来，指向外部类的实例，外部类实例暂且记作 mOuter 吧。 它可以通过 mOuter 去访问 MyActivity 的 ( 非 private ) 成员变量、调用它的 (非 private ) 方法，比如 name 。
+3. 而对于 MyActivity 的字段 age， 由于是 private 的，编译器会在 MyActivity 的字节码中插入名字大概叫 $access0 之类的方法，可以理解成 getAge() 方法 , 让内部类去调用，从而获取到 age 的值
+
+缺点:
+引起内存泄漏.
+由于内部类持有了外部类的一些成员变量,所以内部类没有销毁的时候外部类可能就没法被回收。
+
+解决方案：不让内部类持有外部类的成员变量，比如使用静态内部类。
+如下:
+public  class  MyActivity extends Activity {
+    private  int  age = 14;
+    String name = "zhangsan";
+
+     public void onCreate() {
+          ThreadPoolUtil.execRunnable(new  MyRunnable(this));
+    }
+
+   static class  MyRunnable implements Runnable {
+
+         private  WeakReference<MyActivity>  mWrActivity;
+         public  MyRunnable( MyActivity  activity ) {
+               mWrActivity  =  new WeakReference<MyActivity>( activity );
+         }
+          public  void run() {
+                       MyActivity  activity =  mWrActivity.get();
+                       if (activity == null) {
+                               return;
+                        }
+                        Thread.sleep( 1000 * 60 ); //休眠 1 分钟
+                        String info = "name:" + activity.name + "; age:" + activity.age;
+                        Log.i("TestInfo", info);
+                        ....
+          }
+   }
+}
+可以改进这个写法:
+public  class  WeakRunnable implements Runnable {
+       private  WeakReference<Runnable> mWr;
+       public  WeakRunnable(Runnable  runnable) {
+              mWr = new WeakReference<Runnable>( runnable );
+       }
+
+      public void run() {
+             Runnable runnable = mWr.get();
+             if (runnable != null) {
+                    runnable.run();
+             }
+      }
+}
+
+public  class  MyActivity extends Activity {
+    private  int  age = 14;
+    String name = "zhangsan";
+    List<Object>  mReferList = new ArrayList<Object>();// 很重要
+
+     public void onCreate() {
+          Runnable runnable = new Runnable() { // 去线程池中被执行
+                   public  void run() {
+                        Thread.sleep( 1000 * 60 ); //休眠 1 分钟
+                        String info = "name:" + name + "; age:" + age;
+                        Log.i("TestInfo", info);
+                        ....
+                   }
+         };
+         mReferList.add( runnable ); // 防止 runnable 被快速 GC 掉。
+         ThreadPoolUtil.execRunnable( new WeakRunnable( runnable ));
+    }
+}
+所有的 Runnable 都可以共用一个类 WeakRunnable 了，你可以对 Runnable 接口自由的使用匿名内部类，且不会引起内存泄漏
+mReferList 的作用是把 runnable 给存起来，否则 runnable 没有被其他强引用所持有， 在下次 GC 的时候就被回收掉.
+
+
+GC算法:
+1.引用计数算法（Reference counting）
+2.标记–清除算法（Mark-Sweep）
+3.标记–整理算法
+4.复制算法
+
+引用计数算法
+每个对象在创建的时候，就给这个对象绑定一个计数器。每当有一个引用指向该对象时，计数器加一；每当有一个指向它的引用被删除时，计数器减一。
+这样，当没有引用指向该对象时，该对象死亡，计数器为0，这时就应该对这个对象进行垃圾回收操作。
+
+标记–清除算法
+为每个对象存储一个标记位，记录对象的状态（活着或是死亡）。
+分为两个阶段，一个是标记阶段，这个阶段内，为每个对象更新标记位，检查对象是否死亡；第二个阶段是清除阶段，该阶段对死亡的对象进行清除，执行 GC 操作。
+
+标记–整理算法
+标记-整理法是标记-清除法的一个改进版。同样，在标记阶段，该算法也将所有对象标记为存活和死亡两种状态；不同的是，在第二个阶段，
+该算法并没有直接对死亡的对象进行清理，而是将所有存活的对象整理一下，放到另一处空间，然后把剩下的所有对象全部清除。这样就达到了标记-整理的目的。
+
+复制算法
+该算法将内存平均分成两部分，然后每次只使用其中的一部分，当这部分内存满的时候，将内存中所有存活的对象复制到另一个内存中，
+然后将之前的内存清空，只使用这部分内存，循环下去。
+
+
+sleep和wait的区别
+这两个方法来自不同的类分别是Thread和Object
+sleep:相当于当前线程睡眠,不参与CPU竞争，线程并不会放弃对象的使用权。所以在同步方法或同步块中使用sleep，一个线程访问时，其他的线程无法访问。
+sleep只是暂时休眠一定时间，时间到了之后，自动恢复运行，不需另外的线程唤醒.
+
+Wait:wait是使当前线程暂时放弃对象的使用权进行等待，必须放在同步方法或同步块里。wait会释放当前线程,放弃对象的使用权，让其他的线程也可以访问。
+线程执行wait方法时，需要其他线程调用Monitor.Pulse()或者Monitor.PulseAll() 通过monitor监视器进行唤醒或者是通知等待的队列。
+
+
+最主要是sleep方法没有释放锁，而wait方法释放了锁，使得其他线程可以使用同步控制块或者方法(锁代码块和方法锁)。
+wait，notify和notifyAll只能在同步控制方法或者同步控制块里面使用，而sleep可以在任何地方使用(使用范围)
+sleep必须捕获异常，而wait，notify和notifyAll不需要捕获异常
+
+sleep()睡眠时，保持对象锁，仍然占有该锁；其他线程无法访问
+wait()睡眠时，释放对象锁。其他线程可以访问

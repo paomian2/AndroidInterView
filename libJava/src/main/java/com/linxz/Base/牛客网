@@ -1,0 +1,330 @@
+百度
+1.arrayList与LinkedList的区别
+2.抽象类和接口口
+3.GC算法
+4.匿名内部类介绍一下
+5.wait和sleep的区别
+android相关的
+1.handler机制
+2.service和intentService
+3.内存泄漏的情况
+4.自定义view
+5.事件分发机制
+6.requestLayout和invalidate方法调用后，onlayout，onmeasure，onDraw的执行情况
+7.activity的启动模式
+
+shopee
+1.Broadcast Receiver动态与静态注册；
+2.为什么ListView和RecyclerView都用了？有什么区别？如何实现ListView的缓存？比较两个的缓存机制.
+3.targetSDK意义？兼容性？minSDK呢
+4.IntentService
+5.Android中的内存泄漏:https://www.jianshu.com/p/abee7c186bfa
+6.ThreadLocal
+7.okhttp与volley
+8.屏幕适配--drawable版本
+9.生命周期，透明Activity对生命周期的影响
+10.onSaveInstanceState还可以使用什么其他方法
+11.activity启动模式
+11.application和activity的context启动区别
+
+
+OPPO
+https://www.jianshu.com/p/ffb1cc684507?utm_source=desktop&utm_medium=timeline
+1.mmap + native 日志优化
+2.讲讲 Android 开机启动的流程
+3.系统是怎么帮我们启动找到桌面应用的
+4.讲讲页面的刷新机制，GPU 调试工具几个颜色值分别代表什么？
+5.说说 ConcurrentHashMap 的实现原理说下
+6.你知道 okhttp 是怎么复用连接的吗？
+7.讲一讲动态注册和静态注册
+8.so 的加载流程是怎样的，生命周期是怎样的
+9.native 层怎么检测内存泄漏
+10.leakcanary 的原理，哪些对象可以用来做 gc-root
+11.ui 怎么优化的？
+11.线程耗时卡顿怎么监听的？
+12.说说你看的 Tinker 的原理？
+13.你遇到的最难解决的问题?
+
+OPPO
+https://www.jianshu.com/p/b110f9c1384c
+1.如何理解Java的多态？其中，重载和重写有什么区别？
+2.谈一下JVM内存区域划分？哪部分是线程公有的，哪部分是私有的？
+3.final关键字的用法？
+4.死锁是怎么导致的？如何定位死锁
+5.数据库如何进行升级？SQLite增删改查的基础sql语句?
+6.Broadcast的分类？有序，无序？粘性，非粘性？本地广播？
+7.Android中的事件传递机制？
+8.Handler的原理？
+9.ANR出现的情况有几种？ 怎么分析解决ANR问题？
+10.内存泄露的场景有哪些？内存泄漏分析工具使用方法？
+11.如何实现启动优化，有什么工具可以使用？
+12.常用的设计模式有哪些？是否了解责任链模式？
+
+爱奇艺
+https://www.jianshu.com/p/7b35a47822f8
+1.Android消息机制
+2.Android View绘制流程，当一个TextView的实例调用setText()方法后执行了什么
+3.Android dalvik虚拟机和Art虚拟机的优化升级点
+4.Android屏幕渲染机制
+5.热修复的原理，你都了解过哪几种热修复框架
+6.OkHttp的原理
+7.Android 线程池的实现原理
+8.JavaGC机制
+9.HashMap的实现机制，怎么样HashMap线程安全
+10.可重入锁的实现，公平锁非公平锁都是什么定义？
+11.都用过那些常用的数据结构，说说对树的了解？
+12.Activity启动模式，allowReparent的特点和栈亲和性
+13.WebView优化
+14.有没有Jni使用经验
+15.有使用过RxJava吗？
+16.说说你对设计模式的理解，开发过程中主要用到了哪些设计模式？
+
+小米
+1.冒泡排序的链表实现
+2.写个快排
+3.写个单例模式
+4.Activity启动模式
+5.异常生命周期
+6.从点击应用图标到进入应用，Android系统都做了哪些工作，期间涉及到的进程切换有哪些？
+7.说说你了解的IPC方法
+8.说说Binder的大体实现
+9.怎么控制另外一个进程的View显示
+10.广播中怎么进行网络请求
+11.说说Android中线程池的实现
+12.HashMap如果Hash冲突了怎么解决？
+13.双线程通过线程同步的方式打印12121212.......
+
+
+腾讯
+1.HTTPS是怎么实现的？
+2.Android事件传递流程和OnTouchListener的关系
+3.Activity启动模式
+4.Android线程池实现原理
+5.双指缩放拖动大图
+6.客户端网络安全实现
+7.Webview优化
+8.Android应用保活
+9.RemoteViews实现和使用场景
+10.RecyclerView绘制步骤和复用机制
+11.Binder的大体设计模式
+12.Activity遵循什么设计模式
+13.EventBus源码解析，遵循什么设计模式
+14.Handler为什么会发生内存泄漏
+15.Java内存模块分区和GC机制，GC算法有哪些
+16.Finalize机制
+17.强引用 弱引用 软引用 虚引用的区别和使用场景
+18.LeakCanary的使用和实现原理
+19.介绍一下你在开发过程中使用到的设计模式快排
+20.对服务器众多错误码的处理（错误码有好几万个）
+
+
+阿里
+1.Android消息机制
+2.Android事件传递流程 https://blog.csdn.net/beita08/article/details/88971864
+3.Android View绘制流程
+4.Activity启动模式
+5.Android IPC机制
+6.Android线程池设计原理
+7.EventBus源码和设计模式
+8.Android应用保活
+9.Android UI优化
+10.Android启动优化
+11.快排 堆排 单例
+12.进程线程在操作系统中的实现
+13.HTTPS的组成是什么？
+14.ClassLoader的双亲委托
+Android中的ClassLoader
+15.有过Jni使用经验吗？
+16.有过跨平台开发经验吗？
+
+
+今日头条
+1.视频加密
+2.Android Native Crash
+3.视频组成
+4.播放器原理
+5.开发过程中遇到最深刻的BUG是什么
+6.当你的开发任务很紧张，你怎么去做代码优化的？
+7.怎么和你的同事沟通
+8.你对某某某互联网发生事情的看法
+
+
+阿里腾讯百度等
+https://www.jianshu.com/p/fb815eaf628f
+1.数据库的操作类型有哪些，如何导入外部数据库？
+2.是否使用过本地广播，和全局广播有什么差别？
+3.是否使用过 IntentService，作用是什么， AIDL 解决了什么问题？
+4.Activity、 Window、 View 三者的差别， fragment 的特点？
+5.描述一次网络请求的流程（新浪）
+6.Handler、 Thread 和 HandlerThread 的差别（小米）
+7.低版本 SDK 实现高版本 api（小米）
+8.launch mode 应用场景（百度、小米、乐视）
+9.touch 事件传递流程（小米）
+10.view 绘制流程（百度）
+11.什么情况导致内存泄漏（美团）
+12.ANR 定位和修正
+13.什么情况导致 oom（乐视、美团）
+14.Android Service 与 Activity 之间通信的几种方式
+15.Android 各个版本 API 的区别
+16.如何保证一个后台服务不被杀死,比较省电的方式是什么？（百度)
+17.Requestlayout， onlayout， onDraw， DrawChild 区别与联系（猎豹）
+18.invalidate()和 postInvalidate() 的区别及使用（百度）
+19.Android 动画框架实现原理
+20.Android 为每个应用程序分配的内存大小是多少？（美团）
+21.Android View 刷新机制（百度、美团）
+22.LinearLayout 对比 RelativeLayout（百度）（Ricky）
+23.优化自定义 view（百度、乐视、小米）
+24.ContentProvider（乐视）
+25.fragment 生命周期
+26.volley 解析（美团、乐视）
+27.Android Glide 源码解析
+28.Android 属性动画特性（乐视、小米）
+29.Handler 机制及底层实现
+30.Binder 机制及底层实现
+
+1.接口的意义（百度）
+2.抽象类的意义（乐视）
+3.内部类的作用(百度，乐视)
+4.父类的静态方法能否被子类重写，为什么？（猎豹）
+5.举 1-2 个排序算法，并使用 java 代码实现（美团）
+6.列举 java 的集合和继承关系（百度、美团）
+7.java 虚拟机的特性（百度、乐视）
+8.哪些情况下的对象会被垃圾回收机制处理掉（乐视、美团、小米）
+9.进程和线程的区别（猎豹）
+10.Java 中==和 equals 的区别， equals 和 hashCode 的区别（乐视）
+11.ArrayList 和 HashMap 的实现原理（美团，百度）
+12.ArrayList 和 HashMap 的实现原理（美团，百度）
+13.java 中 int char long 各占多少字节数
+14.java int 与 integer 的区别
+15.string stringbuffer stringbuilder 区别（小米、乐视、百度）
+16.Java 多态（乐视）
+17.什么导致线程阻塞（58、美团）
+18.抽象类接口区别（360）
+19.容器类之间的区别（乐视、美团）
+20.Java 中 HashMap 和 HashTable 的区别（乐视、小米）
+21.ArrayMap VS HashMap
+
+1.堆和栈在内存中的区别是什么(数据结构方面以及实际实现方面)
+2.最快的排序算法是哪个？给阿里 2 万多名员工按年龄排序应该选择哪个算法？堆和树的区别；写出快排代码；链表逆序代码（阿里）
+3.求 1000 以内的水仙花数以及 40 亿以内的水仙花数（百度）
+4.子串包含问题(KMP 算法)写代码实现
+5.万亿级别的两个 URL 文件 A 和 B，如何求出 A 和 B 的差集 C,(Bit 映射->hash 分组->多文件读写效率->磁盘寻址以及应用层面对寻址的优化)
+6.蚁群算法与蒙特卡洛算法
+7.写出你所知道的排序算法及时空复杂度，稳定性（小米）
+
+1.死锁的四个必要条件
+2.常见编码方式； utf-8 编码中的中文占几个字节；数字几个字节
+3.实现一个 Json 解析器(可以通过正则提高速度)
+4.Android App 的设计架构： MVC,MVP,MVVM 与架构经验谈（搜狐）
+5.写出观察者模式的代码
+6.TCP 的 3 次握手和四次挥手； TCP 与 UDP 的区别
+7.HTTP 协议； HTTP1.0 与 2.0 的区别；HTTP 报文结构
+8.HTTP 与 HTTPS 的区别以及如何实现安全性
+
+
+https://mp.weixin.qq.com/s/sN_i_IaLUpFBbX9UHIX4NA
+蓝厂
+事件分发流程
+View的渲染机制
+动画的原理，底层如何给上层信号
+编译打包的过程
+Android有多个资源文件夹，应用在不同分辨率下是如何查找对应文件夹下的资源的，描述整个过程
+ANR的原理（回答主线程5秒阻塞是不行的，要读源码）
+
+度娘
+1.Bitmap 使用时候注意什么？
+2.Oom 是否可以try catch ？
+3.内存泄露如何产生？
+4.适配器模式，装饰者模式，外观模式的异同？
+5.ANR 如何产生？
+6.String buffer 与string builder 的区别？
+7.如何保证线程安全？
+8.java四中引用
+9.Jni 用过么？
+10.多进程场景遇见过么？
+11.关于handler，在任何地方new handler 都是什么线程下
+12.sqlite升级，增加字段的语句
+13.bitmap recycler 相关
+14.强引用置为null，会不会被回收？
+15.glide 使用什么缓存？
+16.Glide 内存缓存如何控制大小？
+17.如何保证多线程读写文件的安全？
+
+某海外直播公司
+1.线程和进程的区别？
+2.为什么要有线程，而不是仅仅用进程？
+3.算法判断单链表成环与否？
+4.如何实现线程同步？
+5.hashmap数据结构？
+6.arraylist 与 linkedlist 异同？
+7.object类的equal 和hashcode 方法重写，为什么？
+8.hashmap如何put数据（从hashmap源码角度讲解）？
+9.简述IPC？
+10.fragment之间传递数据的方式？
+11.简述tcp四次挥手?
+12.threadlocal原理
+13.内存泄漏的可能原因？
+14.用IDE如何分析内存泄漏？
+15.OOM的可能原因？
+16.线程死锁的4个条件？
+17.差值器&估值器
+二面
+1.简述消息机制相关
+2.进程间通信方式？
+3.Binder相关？
+4.触摸事件的分发？
+5.简述Activity启动全部过程？
+6.okhttp源码？
+7.RxJava简介及其源码解读？
+8.性能优化如何分析systrace？
+9.广播的分类？
+10.点击事件被拦截，但是相传到下面的view，如何操作？
+11.Glide源码？
+12.ActicityThread相关？
+13.volatile的原理
+14.synchronize的原理
+15.lock原理
+三面：
+1.翻转一个单项链表 1->2->3->4->5->null =====> 5->4->3->2->1->null
+2.string to integer
+3.合并多个单有序链表（假设都是递增的）
+
+
+由鹅厂与其他公司合资创立的公司
+笔试
+1.Activity生命周期简述
+2.常见内存泄漏情景及避免内存泄漏的措施
+3.Actvity启动模式简述
+4.简绘观察者设计模式UML图
+5.算法，求公共子序列（或者是子串，记不清了）
+6.Java四种引用
+7.自定义view重写哪几个方法？
+8.http 的session&cookie的区别
+9.简述工作线程更新UI的方法
+面试
+1.应用最多占多少内存
+2.滑动卡顿如何解决（不同原因及对应处理方式）
+3.自定义view实战
+4.多线程，多进程 相关
+5.Java四种引用的使用
+
+某ding
+1.XX项目你负责什么
+2.Sqlite 怎么增加一个字段
+3.XX项目中是怎么创建数据库的
+4.Sqlite 怎么删除一个字段
+5.有什么你觉得自己做得好的地方
+6.为什么用Retrofit（一个开源库）
+7.Retrofit与之前的网络库有什么优势
+8.XX项目中你们自己定义的线程池来管理任务，不使用框架，那么，后来新的项目怎么设计的
+9.你认为Rxjava的线程池与你们自己实现任务管理框架有什么区别？
+10.内存泄漏的常见场景
+11.怎么发现&分析内存泄漏
+
+
+1.处理有序数组为什么比无序数组更快 参考StackOverflow
+2.热修复与插件化相关
+3.Integer类是不是线程安全的，为什么
+4.不使用同步锁如何实现线程安全
+5.面试头条的时候在线编程：从上到下从左到右输出二叉树
+6.针对concurrent包下面的一些类的问题

@@ -51,7 +51,7 @@ public class HaspCodeTestMain {
 //                return false;
 //            if (getClass()!=o.getClass())
 //                return false;
-//            Student another= (Student) o;
+//            AbsStudent another= (AbsStudent) o;
 //            return this.number==another.number &&
 //                    this.name.equals(another.name) &&
 //                    this.grade==another.grade;

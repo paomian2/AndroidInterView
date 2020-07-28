@@ -15,7 +15,16 @@
 
     <Button
         android:id="@+id/btnAuthLogin"
-        android:text="授权登录"
+        android:text="授权登录A"
+        android:textSize="15sp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"/>
+
+
+
+    <Button
+        android:id="@+id/btnAuthLogin2"
+        android:text="授权登录B"
         android:textSize="15sp"
         android:layout_width="match_parent"
         android:layout_height="48dp"/>

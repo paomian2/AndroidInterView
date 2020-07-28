@@ -2,6 +2,7 @@ package com.linxz.androidinterview;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.IntentService;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,10 +13,18 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 
+import com.linxz.androidinterview.service.IntentServiceA;
+import com.linxz.androidinterview.service.IntentServiceB;
 import com.linxz.androidinterview.work.WorkRequest;
 
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,10 +37,10 @@ public class MainActivity extends AppCompatActivity {
         iv.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
             public boolean onPreDraw() {
-                int width = iv.getWidth();
-                int height = iv.getHeight();
-                Log.d("TAG", "width:" + width);
-                Log.d("TAG", "height:" + height);
+//                int width = iv.getWidth();
+//                int height = iv.getHeight();
+//                Log.d("TAG", "width:" + width);
+//                Log.d("TAG", "height:" + height);
                 return true;
             }
         });
@@ -51,31 +60,34 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnAuthLogin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String json = "{\n" +
-                        "  \"launcherUser\": \"黑金刚\",\n" +
-                        "  \"userName\": \"访问成功\",\n" +
-                        "  \"token\": \"NoJSFFlMKbqpdhpMxxmhO109Lhl3e2Kj\",\n" +
-                        "  \"serviceModule\": \"1001\",\n" +
-                        "  \"biddingNumber\": \"WXjj20200720154518364173\",\n" +
-                        "  \"isHJG\": true\n" +
-                        "}\n" +
-                        "\n";
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                ComponentName componentName = new ComponentName("com.afor.formaintenance", "com.afor.formaintenance.activity.LaunchActivity");
-                intent.setComponent(componentName);
-                intent.putExtra("openParams", json);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, IntentServiceA.class);
+                startService(intent);
             }
         });
+        findViewById(R.id.btnAuthLogin2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent intentB = new Intent(MainActivity.this, IntentServiceB.class);
+                startService(intentB);
+            }
+        });
+
+
+       // ThreadPoolExecutor
+      //  FixedThreadPool fixedThreadPool;
+      //  SingleThreadExecutor singleThreadExecutor;
+        //CachedThreadPool cachedThreadPool;
+        //ScheduledThreadPool f;
+
+        ScheduledThreadPoolExecutor a;
+
+        ThreadPoolExecutor fixedThreadPool = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
+        ThreadPoolExecutor singleThreadExecutor = (ThreadPoolExecutor) Executors.newSingleThreadExecutor();
+        ThreadPoolExecutor cachedThreadPool = (ThreadPoolExecutor) Executors.newCachedThreadPool();
+        ThreadPoolExecutor scheduledThreadPool = (ThreadPoolExecutor) Executors.newScheduledThreadPool(4);
     }
 
-//        Integer a=1;
-//        a.hashCode();
-//
-//        Double d=1D;
-//        d.hashCode();
-       // Hashtable
-       // HashMap
 
 }
