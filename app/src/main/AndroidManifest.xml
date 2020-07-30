@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".service.ServiceTestMainActivity"/>
+        <activity android:name=".annotations.runtime.AnnotationTestActivity"/>
 
         <service android:name=".service.IntentServiceA"/>
         <service android:name=".service.IntentServiceB"/>

@@ -51,15 +51,6 @@ public class ServiceTestMainActivity extends AppCompatActivity {
                 startService(intent);
             }
         });
-        findViewById(R.id.btnAuthLogin2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                Intent intentB = new Intent(ServiceTestMainActivity.this, IntentServiceB.class);
-                startService(intentB);
-            }
-        });
 
 
     }

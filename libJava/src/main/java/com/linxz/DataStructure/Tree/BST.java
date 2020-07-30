@@ -1,7 +1,9 @@
 package com.linxz.DataStructure.Tree;
 
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
 
@@ -128,19 +130,22 @@ public class BST<E extends Comparable<E>> {
 
 
     //遍历，中序遍历(先左边、结点、右边)，排序后的结果，所以二分搜索树也叫排序树
-    public void queryList(){
-       queryList(root);
+    public List<E> queryList(){
+        List<E> list=new ArrayList<>();
+        queryList(root,list);
+        return list;
     }
 
-    private void queryList(Node node){
+    private void queryList(Node node,List<E> list){
         if(node==null)
             return;
         //遍历左子树
-        queryList(node.left);
+        queryList(node.left,list);
         //结点
         System.out.println(node.e);
+        list.add(node.e);
         //遍历右子树
-        queryList(node.right);
+        queryList(node.right,list);
     }
 
 
