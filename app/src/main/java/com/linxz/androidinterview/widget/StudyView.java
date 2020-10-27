@@ -124,8 +124,10 @@ public class StudyView extends View {
 
         //画图片，就是贴图
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
-        Paint paintBitmap=new Paint();
-        canvas.drawBitmap(bitmap, 10,320,paintBitmap);
+        if (bitmap!=null){
+            Paint paintBitmap=new Paint();
+            canvas.drawBitmap(bitmap, 10,320,paintBitmap);
+        }
 
         //画圆弧度
         Paint p = new Paint();//这个是画矩形的画笔，方便大家理解这个圆弧

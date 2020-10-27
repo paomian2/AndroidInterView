@@ -136,6 +136,8 @@ String str = new String("abc"); 创建了几个对象：
 一个或者两个。如果常量池中没有，则创建两个对象，一个是new String对象，一个是常量池"abc"的对象。
 String str = “abc”; 创建了几个对象？0个 或者 1个
 
+String最大长度65535，但是65535会编译不过，65534可以编译通过。
+理论上允许的的最大长度是2^16=65536，但是需要null
 
 Comparable和Comparator的区别：
 Comparable是一个接口,抽象方法int compareTo(T object)，是一个内置的比较。比如:

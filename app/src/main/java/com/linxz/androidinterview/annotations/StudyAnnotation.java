@@ -16,9 +16,13 @@ import java.lang.annotation.Target;
  *      RetentionPolicy:表明Annotation的策略(必须要有)。
  *
  *
- * a) 若 Annotation 的类型为 SOURCE，则意味着：Annotation 仅存在于编译器处理期间，编译器处理完之后，该 Annotation 就没用了。 例如，" @Override" 标志就是一个 Annotation。当它修饰一个方法的时候，就意味着该方法覆盖父类的方法；并且在编译期间会进行语法检查！编译器处理完后，"@Override" 就没有任何作用了。
- * b) 若 Annotation 的类型为 CLASS，则意味着：编译器将 Annotation 存储于类对应的 .class 文件中，它是 Annotation 的默认行为。
- * c) 若 Annotation 的类型为 RUNTIME，则意味着：编译器将 Annotation 存储于 class 文件中，并且可由JVM读入。
+ * a) 若 Annotation 的类型为 SOURCE，则意味着：Annotation 仅存在于编译器处理期间，编译器处理完之后，该 Annotation 就没用了(类似与工具类)。 例如，" @Override" 标志就是一个 Annotation。当它修饰一个方法的时候，就意味着该方法覆盖父类的方法；并且在编译期间会进行语法检查！编译器处理完后，"@Override" 就没有任何作用了。
+ * b) 若 Annotation 的类型为 CLASS，则意味着：编译器将 Annotation 存储于类对应的 .class 文件中(新建.class文件)，它是 Annotation 的默认行为。
+ * c) 若 Annotation 的类型为 RUNTIME，则意味着：编译器将 Annotation 存储于class文件中(在源码中生成相关代码)，并且可由JVM读入。
+ *
+ *
+ *
+ * 注解没有行为，只有数据(提供相应的数据)
  */
 @Documented//可有可无；若没有定义，则 Annotation 不会出现在 javadoc 中
 @Target({ElementType.TYPE,ElementType.FIELD})

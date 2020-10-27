@@ -1,0 +1,46 @@
+1。KAE实现findViewById
+AndroidStudio tools
+
+public final class MainActivity extends AppCompatActivity {
+   private boolean isOk;
+   private HashMap _$_findViewCache;
+
+   protected void onCreate(@Nullable Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      this.setContentView(-1300009);
+      ((Button)this._$_findCachedViewById(id.btnBoolean)).setOnClickListener((OnClickListener)(new OnClickListener() {
+         public final void onClick(View it) {
+
+         }
+      }));
+   }
+
+   // $FF: synthetic method
+   public static final void access$setOk$p(MainActivity $this, boolean var1) {
+      $this.isOk = var1;
+   }
+
+   public View _$_findCachedViewById(int var1) {
+      if (this._$_findViewCache == null) {
+         this._$_findViewCache = new HashMap();
+      }
+
+      View var2 = (View)this._$_findViewCache.get(var1);
+      if (var2 == null) {
+         var2 = this.findViewById(var1);
+         this._$_findViewCache.put(var1, var2);
+      }
+
+      return var2;
+   }
+
+   public void _$_clearFindViewByIdCache() {
+      if (this._$_findViewCache != null) {
+         this._$_findViewCache.clear();
+      }
+
+   }
+}
+
+即：编译后自动生成findViewById,并存入_$_findViewCache
+

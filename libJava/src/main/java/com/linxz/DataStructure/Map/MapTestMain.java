@@ -1,5 +1,8 @@
 package com.linxz.DataStructure.Map;
 
+
+import java.util.HashMap;
+
 /**
  * @author Linxz
  * 创建日期：2020年07月13日 10:13
@@ -24,5 +27,7 @@ public class MapTestMain {
         System.out.println("-----设置-----");
         linkeMap.set(1+"","曹操");
         System.out.println(linkeMap);
+
+        HashMap a=new HashMap();
     }
 }

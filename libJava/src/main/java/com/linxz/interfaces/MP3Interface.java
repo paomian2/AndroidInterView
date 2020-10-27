@@ -8,4 +8,6 @@ package com.linxz.interfaces;
  */
 public interface MP3Interface {
     void play();
+
+
 }

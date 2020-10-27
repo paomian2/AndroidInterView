@@ -1,2 +1,2 @@
-include ':app', ':libJava'
+include ':app', ':libJava', ':annotations'
 rootProject.name='AndroidInterView'

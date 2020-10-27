@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.linxz.androidinterview">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -12,6 +14,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name=".touch_event.TouchEventActivity"></activity>
+        <activity android:name=".memory_check.MemoryLeakActivity" />
+        <activity android:name=".memory_check.MemoryShakeActivity" />
+        <activity android:name=".handler.HandlerActivity" />
+        <activity android:name=".sync.MyAsyncTaskActivity" />
+        <activity android:name=".service.MyIntentServiceActivity" />
+        <activity android:name=".widget.WidgetActivity" />
+        <activity android:name=".launchMode.SingInstanceActivity_3" />
+        <activity
+            android:name=".launchMode.SingInstanceActivity_2"
+            android:launchMode="singleInstance" />
+        <activity android:name=".launchMode.SingInstanceActivity_1" />
+        <activity
+            android:name=".launchMode.SingTaskActivityHome"
+            android:launchMode="singleTask" />
+        <activity android:name=".launchMode.SingTaskActivity_2" />
+        <activity android:name=".launchMode.SingTaskActivity_1" />
+        <activity
+            android:name=".launchMode.SingleTopActivity"
+            android:launchMode="singleTop" />
+        <activity android:name=".launchMode.LaunchModeTestMainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,11 +42,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".service.ServiceTestMainActivity"/>
-        <activity android:name=".annotations.runtime.AnnotationTestActivity"/>
+        <activity android:name=".service.ServiceTestMainActivity" />
+        <activity android:name=".annotations.runtime.AnnotationTestActivity" />
 
-        <service android:name=".service.IntentServiceA"/>
-        <service android:name=".service.IntentServiceB"/>
+        <service android:name=".service.IntentServiceA" />
+        <service android:name=".service.IntentServiceB" />
+        <service android:name=".service.MyIntentService" />
     </application>
 
 </manifest>

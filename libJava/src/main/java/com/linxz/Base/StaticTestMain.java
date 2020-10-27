@@ -8,14 +8,17 @@ package com.linxz.Base;
  */
 public class StaticTestMain {
 
-    public static int i=1;
+    public static int j=1;
+    public int i=1;
 
     static {
         System.out.println("这是一个静态方法块");
     }
 
     {
-        System.out.println("这是一个方法块");
+        System.out.println("这是一个方法块"+i);
+        i++;
+
     }
 
     public StaticTestMain(){
@@ -29,5 +32,6 @@ public class StaticTestMain {
     public static void main(String[] args) {
         StaticTestMain testMain=new StaticTestMain();
         testMain.sayHello();
+        StaticTestMain testMain2=new StaticTestMain();
     }
 }

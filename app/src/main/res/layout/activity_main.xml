@@ -4,37 +4,97 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    tools:ignore="HardcodedText"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/iv"
-        android:background="@color/colorPrimary"
-        android:layout_width="375dp"
-        android:layout_height="161dp"/>
-
-    <com.linxz.androidinterview.widget.StudyView
-        android:background="#ec6c00"
-        android:layout_width="350dp"
-        android:layout_height="350dp"/>
-
-
-
-
-
-    <Button
-        android:id="@+id/btnAuthLogin"
-        android:text="启动IntentService"
-        android:textSize="15sp"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="48dp"/>
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iv"
+                android:background="@color/colorPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="161dp"
+                tools:ignore="ContentDescription" />
+
+            <Button
+                android:id="@+id/btnAuthLogin"
+                android:text="启动IntentService"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"/>
 
 
-    <Button
-        android:id="@+id/btnInject"
-        android:text="Annotions"
-        android:textSize="15sp"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"/>
+            <Button
+                android:id="@+id/btnInject"
+                android:text="Annotions"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"/>
 
+            <Button
+                android:id="@+id/btnKotlin"
+                android:text="Kotlin"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"/>
+
+            <Button
+                android:id="@+id/btnLaunchMode"
+                android:text="LaunchMode"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"/>
+
+
+            <Button
+                android:id="@+id/btnAuthLogin2"
+                android:text="授权登录"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"/>
+
+
+            <Button
+                android:id="@+id/btnWidget"
+                android:text="自定义View"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"/>
+
+
+            <Button
+                android:id="@+id/btnService"
+                android:text="Service"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"/>
+
+            <Button
+                android:id="@+id/btnHandler"
+                android:text="Handler"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"/>
+            <Button
+                android:id="@+id/btnMemoryShake"
+                android:text="内存抖动检测"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"/>
+            <Button
+                android:id="@+id/btnMemoryLeak"
+                android:text="没存泄露"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"/>
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

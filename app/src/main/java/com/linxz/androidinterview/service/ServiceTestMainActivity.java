@@ -18,7 +18,7 @@ public class ServiceTestMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.service_main);
         Log.d("TAG1", "MainActivity");
         final ImageView iv = findViewById(R.id.iv);
         iv.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
@@ -44,15 +44,13 @@ public class ServiceTestMainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.btnAuthLogin).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnIntentService).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ServiceTestMainActivity.this, IntentServiceA.class);
-                startService(intent);
+                Intent intent = new Intent(ServiceTestMainActivity.this, MyIntentServiceActivity.class);
+                startActivity(intent);
             }
         });
-
-
     }
 
 

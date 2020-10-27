@@ -1,0 +1,70 @@
+
+
+
+Activity的四种启动模式：
+    1. standard
+        默认启动模式，每次激活Activity时都会创建Activity，并放入任务栈中，永远不会调用onNewIntent()。
+    2. singleTop
+        如果在任务的栈顶正好存在该Activity的实例， 就重用该实例，并调用其onNewIntent()，否者就会创建新的实例并放入栈顶(即使栈中已经存在该Activity实例，只要不在栈顶，都会创建实例，而不会调用onNewIntent()，此时就跟standard模式一样)。
+    3. singleTask
+        如果在栈中已经有该Activity的实例，就重用该实例(会调用实例的onNewIntent())。重用时，会让该实例回到栈顶，因此在它上面的实例将会被移除栈。如果栈中不存在该实例，将会创建新的实例放入栈中（此时不会调用onNewIntent()）。
+    4. singleInstance
+        在一个新栈中创建该Activity实例，并让多个应用共享改栈中的该Activity实例。一旦改模式的Activity的实例存在于某个栈中，任何应用再激活改Activity时都会重用该栈中的实例，其效果相当于多个应用程序共享一个应用，不管谁激活该Activity都会进入同一个应用中。
+
+        ActivityA(默认)->ActivityB(SingleInstance)->ActivityC(默认)：
+        ActivityC退出的时候直接到了ActivityA。默认的栈中的Activity都退出的时候，才退回到SingleInstance栈
+
+        当前页面为ActivityB,按下Home健，从新进入后看到的是默认栈的最后一个Activity,如这里的ActivityA
+
+             //首次进入
+            //2020-08-26 20:07:59.077 5562-5562/com.linxz.androidinterview D/launchMode: onCreate:First123
+            //2020-08-26 20:07:59.078 5562-5562/com.linxz.androidinterview D/launchMode: onStart:First123
+            //2020-08-26 20:07:59.079 5562-5562/com.linxz.androidinterview D/launchMode: onResume:First123
+
+            //第二次进入
+            //2020-08-26 20:08:02.073 5562-5562/com.linxz.androidinterview D/launchMode: onPause:First123
+            //                                                               launchMode: onNewIntent userName:Last456
+            //2020-08-26 20:08:02.073 5562-5562/com.linxz.androidinterview D/launchMode: onResume:First123
+
+
+            //退出
+            //2020-08-26 20:11:26.975 5562-5562/com.linxz.androidinterview D/launchMode: onPause:First123
+            //2020-08-26 20:11:27.140 5562-5562/com.linxz.androidinterview D/launchMode: onStop:First123
+            //2020-08-26 20:11:27.140 5562-5562/com.linxz.androidinterview D/launchMode: onDestroy:First123
+
+
+
+
+            //2020-10-14 09:33:32.732 25760-25760/com.linxz.androidinterview D/SingTask: SingTaskActivityHome onCreate
+                //2020-10-14 09:33:32.762 25760-25760/com.linxz.androidinterview D/ActivityThread: add activity client record, r= ActivityRecord{e245340 token=android.os.BinderProxy@7de6ff8 {com.linxz.androidinterview/com.linxz.androidinterview.launchMode.SingTaskActivityHome}} token= android.os.BinderProxy@7de6ff8
+                //2020-10-14 09:33:32.764 25760-25760/com.linxz.androidinterview D/SingTask: SingTaskActivityHome onStart
+                //2020-10-14 09:33:32.766 25760-25760/com.linxz.androidinterview D/SingTask: SingTaskActivityHome onResume
+                //2020-10-14 09:33:37.761 25760-25760/com.linxz.androidinterview D/SingTask: SingTaskActivityHome onPause
+                //2020-10-14 09:33:37.860 25760-25760/com.linxz.androidinterview D/SingTask: SingTaskActivity_1 onCreate
+                //2020-10-14 09:33:37.886 25760-25760/com.linxz.androidinterview D/ActivityThread: add activity client record, r= ActivityRecord{6caa15 token=android.os.BinderProxy@8a0ded {com.linxz.androidinterview/com.linxz.androidinterview.launchMode.SingTaskActivity_1}} token= android.os.BinderProxy@8a0ded
+                //2020-10-14 09:33:37.888 25760-25760/com.linxz.androidinterview D/SingTask: SingTaskActivity_1 onStart
+                //2020-10-14 09:33:37.889 25760-25760/com.linxz.androidinterview D/SingTask: SingTaskActivity_1 onResume
+                //2020-10-14 09:33:38.293 25760-25760/com.linxz.androidinterview D/SingTask: SingTaskActivityHome onStop
+                //2020-10-14 09:33:49.376 25760-25760/com.linxz.androidinterview D/SingTask: SingTaskActivity_1 onPause
+                //2020-10-14 09:33:49.398 25760-25760/com.linxz.androidinterview D/SingTask: SingTaskActivity_2 onCreate
+                //2020-10-14 09:33:49.423 25760-25760/com.linxz.androidinterview D/ActivityThread: add activity client record, r= ActivityRecord{373b756 token=android.os.BinderProxy@87ddce {com.linxz.androidinterview/com.linxz.androidinterview.launchMode.SingTaskActivity_2}} token= android.os.BinderProxy@87ddce
+                //2020-10-14 09:33:49.426 25760-25760/com.linxz.androidinterview D/SingTask: SingTaskActivity_2 onStart
+                //2020-10-14 09:33:49.428 25760-25760/com.linxz.androidinterview D/SingTask: SingTaskActivity_2 onResume
+                //2020-10-14 09:33:49.826 25760-25760/com.linxz.androidinterview D/SingTask: SingTaskActivity_1 onStop
+                //2020-10-14 09:33:52.824 25760-25760/com.linxz.androidinterview D/SingTask: SingTaskActivity_1 onDestroy
+                //2020-10-14 09:33:52.824 25760-25760/com.linxz.androidinterview D/ActivityThread: Remove activity client record, r= ActivityRecord{6caa15 token=android.os.BinderProxy@8a0ded {com.linxz.androidinterview/com.linxz.androidinterview.launchMode.SingTaskActivity_1}} token= android.os.BinderProxy@8a0ded
+                //2020-10-14 09:33:52.836 25760-25760/com.linxz.androidinterview D/SingTask: SingTaskActivity_2 onPause
+                //2020-10-14 09:33:52.851 25760-25760/com.linxz.androidinterview D/SingTask: SingTaskActivityHome onRestart
+                //2020-10-14 09:33:52.852 25760-25760/com.linxz.androidinterview D/SingTask: SingTaskActivityHome onStart
+                //2020-10-14 09:33:52.853 25760-25760/com.linxz.androidinterview D/SingTask: SingTaskActivityHome onResume
+                //2020-10-14 09:33:53.266 25760-25760/com.linxz.androidinterview D/SingTask: SingTaskActivity_2 onStop
+                //2020-10-14 09:33:53.269 25760-25760/com.linxz.androidinterview D/SingTask: SingTaskActivity_2 onDestroy
+                //2020-10-14 09:33:53.269 25760-25760/com.linxz.androidinterview D/ActivityThread: Remove activity client record, r= ActivityRecord{373b756 token=android.os.BinderProxy@87ddce {com.linxz.androidinterview/com.linxz.androidinterview.launchMode.SingTaskActivity_2}} token= android.os.BinderProxy@87ddce
+
+
+                //Home为SingTask模式
+                //Home进入SingTaskActivity_1： Home(onCreate,onStart,onResume,onPause)---->>SingTaskActivity_1(onCreate,onStart,onResume)--->>>Home(onStop)
+                //SingTaskActivity_1进入SingTaskActivity_2： SingTaskActivity_1(onPause)--->>>SingTaskActivity_2(onCreate,onStart,onResume)-->>>SingTaskActivity_1(onStop)
+                //SingTaskActivity_2进入Home：SingTaskActivity_1(onDestroy)--->>>SingTaskActivity_2(onPause)-->>>Home(onRestart,onStart,onNewIntent,onResume)--->>>SingTaskActivity_2(onStop,onDestroy)
+
+                //Home前面的页面(上一个页面除外)立即onDestroy，上一个页面onPause，等到Home(onRestart,onStart,onNewIntent,onResume)之后，再onDestroy
