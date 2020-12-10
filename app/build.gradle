@@ -35,6 +35,8 @@ android {
         }
     }
 
+    //没有配置signingConfig signingConfigs.release，gradlew assembleRelease打出来的是没有签名的包不能运行
+    //buildTypes一定要在signingConfigs后面，不然配置signingConfigs.release会找不到release
     buildTypes {
         release {
             minifyEnabled false
@@ -134,7 +136,28 @@ println "common.gradle storeFile:${signConfigs.storeFile}"
 
 
 //将build中的apk拷贝出来
+//task('copyapk'){
+//    //doLast在gradle中的执行阶段去执行
+//    doLast{
+//        def sourcePath=this.buildDir.path+'/outputs/apk'
+//        def minePath='/Users/linxz/Desktop/打包/AndroidInterview'
+//        def command="mv -f ${sourcePath} ${minePath}"
+//        println command
+//        //执行命令固定不变，改变的只有command
+//        exec {
+//            try{
+//                executable 'bash'
+//                args '-c', command
+//                println 'the command is execute success'
+//            }catch(GradleException e){
+//                println 'the command is execute failed.'
+//            }
+//        }
+//    }
+//}
+
 task('copyapk'){
+    setGroup('linxz')
     //doLast在gradle中的执行阶段去执行
     doLast{
         def sourcePath=this.buildDir.path+'/outputs/apk'
@@ -153,6 +176,7 @@ task('copyapk'){
         }
     }
 }
+
 
 
 //task定义
