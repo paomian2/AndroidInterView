@@ -16,6 +16,7 @@ public class ThreadPool {
     }
 
     private void init(){
+        //不限制线程数量，上一个线程执行完成。后面需要线程直接拿上一个线程再执行，不用事例化新线程
         ExecutorService service= Executors.newCachedThreadPool();
         service.submit(new Runnable() {
             @Override
@@ -29,6 +30,9 @@ public class ThreadPool {
 
             }
         });
+
+
+        ExecutorService service2=Executors.newFixedThreadPool(5);
 
     }
 }

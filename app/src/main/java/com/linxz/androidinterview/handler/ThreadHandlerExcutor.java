@@ -45,4 +45,9 @@ public class ThreadHandlerExcutor {
         }
     }
 
+
+    public void test(){
+        Handler mHandler=new Handler();
+        //mHandler.sendEmptyMessage()
+    }
 }

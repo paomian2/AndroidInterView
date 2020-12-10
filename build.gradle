@@ -9,6 +9,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.3'
+       // classpath 'com.android.tools.build:gradle:3.1.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -26,3 +27,253 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+/**
+ * 配置阶段开始前的监听回调
+ * */
+this.beforeEvaluate {
+    println '配置阶段准备开始'
+}
+
+/**
+ *配置接单完成以后的回调
+ * */
+this.afterEvaluate {
+    println '配置阶段执行完毕'
+}
+
+/**
+ * gradle执行完毕后的回调监听
+ * */
+this.gradle.buildFinished {
+    println '执行阶段执行完毕'
+}
+
+this.gradle.beforeProject {}
+
+this.gradle.afterProject {}
+
+//this.gradle.addListener()
+
+/**
+ * project相关api
+ * 随便执行一个gradle任务都会执行到下面代码
+ * */
+this.getMyProjects()
+
+def getMyProjects(){
+    println '-------------------------------'
+    println 'Root Project'
+    println '-------------------------------'
+    this.getAllprojects().eachWithIndex{ Project project, int index ->
+        if (index==0){
+            println "Root project : ${project.name}"
+        }else{
+            println "+---- project : ${project.name}"
+        }
+    }
+}
+
+
+def getMySubProjects(){
+    println '-------------------------------'
+    println 'Root Project'
+    println '-------------------------------'
+    this.getSubprojects().eachWithIndex{ Project project, int index ->
+        println "+---- Sub project : ${project.name}"
+    }
+}
+
+this.getMySubProjects()
+
+
+//获取父project
+def getMyParentProject(){
+  // def name=this.getParent().name
+   //调用报错，因为this.getParent()得到的为null,null.name报错
+
+}
+this.getMyParentProject()
+
+
+def getMyRootProject(){
+    def name=this.getRootProject()
+    println "Root Project name is ${name}"
+}
+this.getMyRootProject()
+
+
+//获取子project
+project('app'){
+    Project project_->
+        apply plugin:'com.android.application'
+//        group 'com.linxz'
+//        version '1.0.0-release'
+        dependencies{}
+        android{}
+
+}
+
+//配置当前节点工程和其subproject的所有project
+allprojects {
+    group 'com.linxz'
+    version '1.0.0-release'
+}
+
+println project('libJava').group
+
+//不包含当前结点工程，只包括它的subproject
+subprojects {
+   Project project->
+       println "子工程项目名称为：${project.name}"
+       println "子工程plugins：${project.plugins}"
+       if (project.plugins.hasPlugin('com.android.library')){
+           //假如库工程都需要添加同一个plugin
+           apply from '../publishToMaven.gradle'
+       }
+}
+
+
+//属性相关api
+
+//定义扩展属性 可用来配置统一版本号 库地址。子project通过rootProject.mCompileSdkVersion获取到。或者直接使用mCompileSdkVersion获取，因为父project的属性，子project可以直接继承
+ext{
+    mCompileSdkVersion = 28
+}
+
+def mAndroidTest(){
+    println this.mCompileSdkVersion
+}
+
+mAndroidTest()
+
+//给子project配置扩展属性,子project可直接使用
+subprojects {
+    ext{
+        mCompileSdkVersion = 25
+    }
+}
+
+//添加其它gradle类
+apply from: this.file('common.gradle')
+
+println "common.gradle storeFile:${signConfigs.storeFile}"
+
+
+//根据gradle.properties配置来控制gradle代码
+if (hasProperty('isLoadTest')) {
+    //apply plugin: 'kotlin-android-extensions'
+    println '有isLoadTest'
+} else {
+    println '没有isLoadTest'
+}
+
+//读取出来的isLoadTest是字符串，所有不能直接使用
+//if (isLoadTest){
+//    println 'kotlin-android-extensions'
+//}else{
+//    println '不加载任何插件'
+//}
+if (isLoadTest.toBoolean()){
+    println 'kotlin-android-extensions'
+}else{
+    println '不加载任何插件'
+}
+println isLoadTest
+
+
+
+//文件相关api
+//路径获取相关api getRootDir(),getProjectDir()
+//文件操作相关api 文件定位、文件拷贝、文件树遍历
+
+println getRootDir().absolutePath
+println getBuildDir().absolutePath
+println getProjectDir().absolutePath
+
+
+def getContent(path){
+    try{
+        def file=file(path)
+        return file.text
+    }catch(GradleException e){
+        println 'file not found...'
+    }
+}
+
+println getContent('common.gradle')
+
+
+//其它api
+//依赖相关api 外部命令执行
+
+//buildscript{
+//   ScriptHandler scriptHandler->
+//       //配置工程的仓库地址
+//       scriptHandler.repositories {
+//           RepositoryHandler repositoryHandler->
+//               repositoryHandler.jcenter()
+//               repositoryHandler.mavenCentral()
+//               repositoryHandler.mavenLocal()
+//               repositoryHandler.maven {
+//                   name 'personal'
+//                   url 'http://localhost:8089:/nexus/repositories'
+//                   credentials{
+//                       username='admin'
+//                       password='admin123'
+//                   }
+//               }
+//               repositoryHandler.ivy {}
+//       }
+//       //配置工程的插件地址
+//       scriptHandler.dependencies {
+//
+//       }
+//}
+
+//去掉闭包参数
+buildscript{
+        //配置工程的仓库地址
+        repositories {
+                jcenter()
+                mavenCentral()
+                mavenLocal()
+                maven {
+                    name 'personal'
+                    url 'http://localhost:8089:/nexus/repositories'
+                    credentials{
+                        username='admin'
+                        password='admin123'
+                    }
+                }
+               // ivy {}
+        }
+        //配置工程的插件地址
+        dependencies {
+
+        }
+}
+
+
+
+//美团walle多渠道打包步骤一
+//buildscript {
+//    dependencies {
+//        classpath 'com.meituan.android.walle:plugin:1.1.6'
+//    }
+//}
+////并在当前App的 build.gradle 文件中apply这个插件，并添加上用于读取渠道号的arr包
+//apply plugin: 'walle'
+//
+//dependencies {
+//    compile 'com.meituan.android.walle:library:1.1.6'
+//}
+////并在当前App的 build.gradle 文件上配置插件，默认就行不用改：
+//walle {
+//    // 指定渠道包的输出路径
+//    apkOutputFolder = new File("${project.buildDir}/outputs/channels");
+//    // 定制渠道包的APK的文件名称
+//    apkFileNameFormat = '${appName}-${packageName}-${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}.apk';
+//    // 渠道配置文件
+//    channelFile = new File("${project.getProjectDir()}/channel")
+//}

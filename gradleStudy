@@ -1,0 +1,8 @@
+//  ./gradlew clean
+//  ./gradlew build
+//  ./gradlew projects
+
+
+API相关
+
+Project API组成 ：gradle生命周期api project相关api task相关api 属性相关api 其它api file相关api

@@ -1,0 +1,24 @@
+ext {
+
+    //定义三个map
+
+    android = [
+            compileSdkVersion:   25,
+            buildToolsVersion:   '25.0.0'
+            //...
+    ]
+
+    signConfigs = [
+            'storeFile'     : 'study.jks',
+            'storePassword' : 'linxz123456',
+            //....
+    ]
+
+
+    dependence =[
+            'libSupportV7' : 'com.android.support:xxx'
+            //....
+    ]
+
+
+}

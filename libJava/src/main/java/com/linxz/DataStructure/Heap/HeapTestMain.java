@@ -16,7 +16,6 @@ public class HeapTestMain {
 
     public static void main(String[] args) {
         int n=100000;
-
         MaxHeap<Integer> maxHeap=new MaxHeap<>();
         Random random=new Random();
         for (int i=0;i<n;i++)
@@ -30,10 +29,6 @@ public class HeapTestMain {
         for (int i=1;i<n;i++)
             if (arr[i-1]<arr[i])
                 throw new IllegalArgumentException("Test MaxHeap complete.");
-
         System.out.println("Test MaxHeap complete.");
-
-
-
     }
 }

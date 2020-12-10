@@ -1,0 +1,277 @@
+1.通信
+EventChannel、MethodChannel、BasicMessageChannel
+EventChannel：
+Native:
+public class EventChannelPlugin implements EventChannel.StreamHandler {
+
+    private EventChannel.EventSink events;
+
+    public static EventChannelPlugin registerWith(BinaryMessenger messenger){
+        EventChannelPlugin eventChannelPlugin=new EventChannelPlugin();
+        new EventChannel(messenger,"EventChanelPlugin").setStreamHandler(eventChannelPlugin);
+        return eventChannelPlugin;
+    }
+
+    @Override
+    public void onListen(Object arguments, EventChannel.EventSink events) {
+        this.events=events;
+    }
+
+    @Override
+    public void onCancel(Object arguments) {
+      this.events=null;
+    }
+
+    public void send(Object message){
+        if (events!=null){
+            events.success(message);
+        }
+    }
+}
+Flutter:
+static const EventChannel eventChanelPlugin=EventChannel("EventChanelPlugin");
+StreamSubscription _streamSubscription=eventChanelPlugin
+                          .receiveBroadcastStream()
+                          .listen(_onToDart,onError: _onError);
+void  _onToDart(message) {
+    setState(() {
+      showMessage=message;
+    });
+  }
+
+void _onError(message){
+     print(message);
+  }
+
+Native与Flutter都定义EventChannel，名称统一为"EventChanelPlugin"
+
+
+
+MethodChannel：
+Native:
+public class MethodChannelPlugin implements MethodChannel.MethodCallHandler {
+
+    private OnReceiveFlutterMessageListener mOnReceiveFlutterMessageListener;
+    private NativeReplyFlutter              mNativeReplyFlutter;
+
+
+    private MethodChannelPlugin(FlutterEngine flutterEngine,
+                                String channelName,
+                                OnReceiveFlutterMessageListener onReceiveFlutterMessageListener,
+                                NativeReplyFlutter nativeReplyFlutter) {
+
+        this.mOnReceiveFlutterMessageListener=onReceiveFlutterMessageListener;
+        this.mNativeReplyFlutter=nativeReplyFlutter;
+        MethodChannel methodChannel = new MethodChannel(flutterEngine.getDartExecutor(), channelName);
+        methodChannel.setMethodCallHandler(this);
+
+    }
+
+    public static Builder builder(FlutterEngine flutterEngine,String channelName){
+        return new Builder(flutterEngine,channelName);
+    }
+
+    public static class Builder{
+        private FlutterEngine flutterEngine;
+        private String channelName;
+        private OnReceiveFlutterMessageListener mOnReceiveFlutterMessageListener;
+        private NativeReplyFlutter mNativeReplyFlutter;
+
+        private Builder(FlutterEngine flutterEngine,String channelName){
+            this.flutterEngine=flutterEngine;
+            this.channelName=channelName;
+        }
+
+        public Builder onReceiveFlutterMessageListener(OnReceiveFlutterMessageListener onReceiveFlutterMessageListener){
+            this.mOnReceiveFlutterMessageListener=onReceiveFlutterMessageListener;
+            return this;
+        }
+        public Builder nativeReplyFlutter(NativeReplyFlutter nativeReplyFlutter){
+            this.mNativeReplyFlutter=nativeReplyFlutter;
+            return this;
+        }
+        public MethodChannelPlugin build(){
+            return new MethodChannelPlugin(flutterEngine,channelName,mOnReceiveFlutterMessageListener,mNativeReplyFlutter);
+        }
+    }
+
+    @Override
+    public void onMethodCall(@NonNull MethodCall call, @NonNull MethodChannel.Result result) {
+        if (call.arguments==null){
+            result.notImplemented();
+            return;
+        }
+        if ("send".equals(call.method)) {
+            if (mOnReceiveFlutterMessageListener!=null){
+                mOnReceiveFlutterMessageListener.onReceive(call.arguments.toString());
+            }
+            if (mNativeReplyFlutter!=null){
+                result.success(mNativeReplyFlutter.reply(call.arguments.toString()));
+            }
+        } else {
+            result.notImplemented();
+        }
+    }
+
+    /**
+     * Native接收Flutter发过来的消息
+     * */
+    public interface OnReceiveFlutterMessageListener{
+        void onReceive(String message);
+    }
+
+    /**
+     * Native接收到Flutter消息后回复对于的消息
+     * */
+    public interface NativeReplyFlutter{
+        String reply(String message);
+    }
+}
+   MethodChannelPlugin
+                .builder(flutterEngine,"MethodChannelPlugin")
+                .onReceiveFlutterMessageListener(message -> {
+                    tvFlutterMessage.setText("接收到Flutter通过Method发送过来的消息");
+                })
+                .nativeReplyFlutter(message -> "Native已接收到Flutter发过来的消息")
+                .build();
+
+Flutter:
+static const MethodChannel _methodChannel= const  MethodChannel("MethodChannelPlugin");
+void _sendToNativeByMethodChannel(){
+     Future<String> future=_methodChannel.invokeMethod("send",_controller.text);
+     future.then((message){
+       print("_sendToNativeByMethodChannel方法获取到Native返回来的数据$message");
+       if(message!=null){
+         if (message!=null && message.isNotEmpty)
+           Fluttertoast.showToast(
+               msg: message,
+               toastLength: Toast.LENGTH_SHORT,
+               gravity: ToastGravity.CENTER,
+               timeInSecForIos: 1,
+               backgroundColor: Colors.red,
+               textColor: Colors.white,
+               fontSize: 16.0);
+       }
+     });
+  }
+
+Native与Flutter都定义MethodChannel，名称为"MethodChannelPlugin"，交互的方法为"send"
+
+
+BasicMessageChannel：
+Native:
+public class BasicMessageChannelPlugin implements BasicMessageChannel.MessageHandler<String> {
+
+
+    private BasicMessageChannel<String> messageChannel;
+    private OnFlutterReplyListener mReplyListener;
+    private OnReceiveFlutterMessage mOnReceiveFlutterMessage;
+    private NativeReplyToFlutter mNativeReplyToFlutter;
+
+    private BasicMessageChannelPlugin(FlutterEngine flutterEngine,
+                                      String channelName,
+                                      OnFlutterReplyListener replyListener,
+                                      OnReceiveFlutterMessage onReceiveFlutterMessage,
+                                      NativeReplyToFlutter nativeReplyToFlutter){
+        this.mReplyListener=replyListener;
+        this.mOnReceiveFlutterMessage=onReceiveFlutterMessage;
+        this.mNativeReplyToFlutter=nativeReplyToFlutter;
+        if (flutterEngine==null){
+            throw new IllegalArgumentException("FlutterEngine can not be null");
+        }
+        if (TextUtils.isEmpty(channelName)){
+            throw new IllegalArgumentException("channelName can not ben empty");
+        }
+        this.messageChannel = new BasicMessageChannel<>(flutterEngine.getDartExecutor(), channelName, StringCodec.INSTANCE);
+        messageChannel.setMessageHandler(this);
+    }
+
+    public static Builder builder(FlutterEngine flutterEngine, String channelName){
+        return new Builder(flutterEngine,channelName);
+    }
+
+    public static class Builder{
+        private FlutterEngine flutterEngine;
+        private OnFlutterReplyListener mReplyListener;
+        private OnReceiveFlutterMessage mOnReceiveFlutterMessage;
+        private NativeReplyToFlutter mNativeReplyToFlutter;
+        private String channelName;
+        private Builder(FlutterEngine flutterEngine, String channelName){
+            this.flutterEngine=flutterEngine;
+            this.channelName=channelName;
+        }
+        public Builder onFlutterReplyListener(OnFlutterReplyListener reply){
+            this.mReplyListener=reply;
+            return this;
+        }
+        public Builder onReceiveFlutterMessage(OnReceiveFlutterMessage onReceiveFlutterMessage){
+            this.mOnReceiveFlutterMessage=onReceiveFlutterMessage;
+            return this;
+        }
+        public Builder nativeReplyToFlutter(NativeReplyToFlutter nativeReplyToFlutter){
+            this.mNativeReplyToFlutter=nativeReplyToFlutter;
+            return this;
+        }
+        public BasicMessageChannelPlugin build(){
+            return new BasicMessageChannelPlugin(
+                    flutterEngine,
+                    channelName,
+                    mReplyListener,
+                    mOnReceiveFlutterMessage,
+                    mNativeReplyToFlutter
+            );
+        }
+    }
+
+    @Override
+    public void onMessage(String s, @NonNull BasicMessageChannel.Reply<String> reply) {
+        if (mOnReceiveFlutterMessage != null) {
+            mOnReceiveFlutterMessage.onReceiveMessage(s);
+        }
+        if (mNativeReplyToFlutter != null) {
+            reply.reply(mNativeReplyToFlutter.replyToFlutter(s));
+        }
+    }
+
+    public void send(String str) {
+        messageChannel.send(str, reply -> {
+            if (mReplyListener != null) {
+                mReplyListener.onReply(reply);
+            }
+        });
+    }
+
+    /**
+     * Native向Flutter发送消息，Flutter接收到消息之后向Native回复相关信息
+     * 譬如客户端-服务器端请求一样
+     * */
+    public interface OnFlutterReplyListener{
+        void onReply(String reply);
+    }
+
+    /**
+     * Flutter主动向Native发送消息
+     * */
+    public interface OnReceiveFlutterMessage{
+        void onReceiveMessage(String reply);
+    }
+
+    /**
+     * Native接收到Flutter发送过来的消息{@link OnReceiveFlutterMessage}之后对Flutter进行回复
+     * */
+    public interface NativeReplyToFlutter{
+        String replyToFlutter(String flutterMessage);
+    }
+
+
+}
+Flutter:
+static const BasicMessageChannel<String> basicMessageChanelPlugin=BasicMessageChannel("BasicMessageChannelPlugin",StringCodec());
+ basicMessageChanelPlugin.setMessageHandler(
+        (String message)=> Future<String>((){
+          setState(() {
+            showMessage ="BasicMessageChannel:$message";
+          });
+          return "收到Native的消息:$message";
+        })
+    );

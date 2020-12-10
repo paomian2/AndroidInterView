@@ -80,7 +80,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                GlobalScopeTestMain globalScopeTestMain=new GlobalScopeTestMain();
 //                globalScopeTestMain.launchGlobalScope();
-                new GlobalScope2().main2();
+                //new GlobalScope2().main2();
+                new GlobalScope2().createCoroutineTest2();
             }
         });
         findViewById(R.id.btnLaunchMode).setOnClickListener(new View.OnClickListener() {

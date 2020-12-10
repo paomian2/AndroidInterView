@@ -1,6 +1,6 @@
 百度
 1.arrayList与LinkedList的区别
-2.抽象类和接口口
+2.抽象类和接口
 3.GC算法
 4.匿名内部类介绍一下
 5.wait和sleep的区别

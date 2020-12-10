@@ -1,2 +1,4 @@
-include ':app', ':libJava', ':annotations'
+include ':app', ':libJava', ':annotations', ':libNet'
 rootProject.name='AndroidInterView'
+
+println 'setting初始化阶段开始执行...'
