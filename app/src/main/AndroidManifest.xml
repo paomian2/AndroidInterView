@@ -4,6 +4,13 @@
     package="com.linxz.androidinterview">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!--SDCard中创建与删除文件权限-->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <!--向SDCard写入数据权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
 
     <application
         android:name=".App"
@@ -14,13 +21,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".touch_event.TouchEventActivity"></activity>
+        <activity android:name=".launchMode.child.B_Activity">
+
+        </activity>
+        <activity android:name=".launchMode.child.A_Activity" />
+        <activity android:name=".launchMode.child.SingTaskActivity" android:launchMode="singleInstance"/>
+        <activity android:name=".touch_event.TouchEventActivity" />
         <activity android:name=".memory_check.MemoryLeakActivity" />
         <activity android:name=".memory_check.MemoryShakeActivity" />
         <activity android:name=".handler.HandlerActivity" />
         <activity android:name=".sync.MyAsyncTaskActivity" />
         <activity android:name=".service.MyIntentServiceActivity" />
-        <activity android:name=".widget.WidgetActivity" />
+        <activity android:name=".widget.WidgetActivity" >
+
+        </activity>
         <activity android:name=".launchMode.SingInstanceActivity_3" />
         <activity
             android:name=".launchMode.SingInstanceActivity_2"
@@ -36,11 +50,6 @@
             android:launchMode="singleTop" />
         <activity android:name=".launchMode.LaunchModeTestMainActivity" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".service.ServiceTestMainActivity" />
         <activity android:name=".annotations.runtime.AnnotationTestActivity" />
@@ -48,6 +57,32 @@
         <service android:name=".service.IntentServiceA" />
         <service android:name=".service.IntentServiceB" />
         <service android:name=".service.MyIntentService" />
+
+        <activity android:name=".layout_optimize.LayoutOptimizeActivity" />
+        <activity
+            android:name=".launchMode.child.SingleTopActivity_A"
+            android:launchMode="singleTop" />
+
+        <activity android:name="com.linxz.androidinterview.IPC.SocketIPCActivity">
+
+        </activity>
+        <activity android:name=".mvvm.ShareActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.linxz.androidinterview.fragmets.FragmentHomeActivity">
+        </activity>
+        <activity android:name=".activitys.LifecycleActivityHome">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>

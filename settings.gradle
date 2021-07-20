@@ -1,3 +1,8 @@
+include ':streamlet-utils'
+include ':libapp2'
+include ':libappbase'
+include ':libapp'
+include ':libcompiler'
 include ':app', ':libJava', ':annotations', ':libNet'
 rootProject.name='AndroidInterView'
 

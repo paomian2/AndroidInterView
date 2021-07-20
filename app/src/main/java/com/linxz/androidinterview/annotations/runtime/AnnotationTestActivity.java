@@ -22,6 +22,9 @@ public class AnnotationTestActivity extends Activity {
     @BindView(R.id.tvAnnotation)
     TextView textView;
 
+    @Autowired
+    private Studet studet;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="HardcodedText"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn1"
+            android:text="嵌套fragment配置"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+             />
+
+        <Button
+            android:id="@+id/btn2"
+            android:text="add fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn3"
+            android:text="replace fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            />
+
+        <Button
+            android:id="@+id/btn4"
+            android:text="销毁动态Fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn5"
+            android:text="隐藏Fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            />
+
+        <Button
+            android:id="@+id/btn6"
+            android:text="显示fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn7"
+            android:text="fragmennt退栈"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            />
+
+
+    </LinearLayout>
+
+
+
+
+    <fragment
+        android:id="@+id/fragment1"
+        android:name="com.linxz.androidinterview.fragmets.LayoutFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <FrameLayout
+        android:layout_marginTop="20dp"
+        android:id="@+id/fragmentContainer"
+        android:background="#efefef"
+        android:layout_width="@dimen/px_300"
+        android:layout_height="100dp">
+        <TextView
+            android:text="Fragment容器"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_marginTop="20dp"
+        android:id="@+id/fragmentContainer2"
+        android:background="#efefef"
+        android:layout_width="@dimen/px_300"
+        android:layout_height="100dp">
+        <TextView
+            android:text="Fragment容器"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
+
+</LinearLayout>

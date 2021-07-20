@@ -5,17 +5,23 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-   // compileSdkVersion 28
+    // compileSdkVersion 28
     compileSdkVersion 28
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.linxz.androidinterview"
-        minSdkVersion 18
-        targetSdkVersion 28
+        minSdkVersion 15
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+        packagingOptions {
+            //解决编译时com.android.builder.merge.DuplicateRelativeFileException: More than one file was found with OS independent path 'META-INF/rxjava.properties'这个错误
+            exclude 'META-INF/rxjava.properties'
+        }
+        multiDexEnabled true
+
     }
 
     signingConfigs {
@@ -50,8 +56,8 @@ android {
 
     //多渠道打包
     flavorDimensions "default"
-    productFlavors{
-        Tencent{
+    productFlavors {
+        Tencent {
             dimension "default"
             applicationId "com.linxz.streamlet"
             versionName "V1.1.0.0"
@@ -59,13 +65,13 @@ android {
             buildConfigField "boolean", "IS_MINE", 'false'
             manifestPlaceholders = [
                     APP_PACKAGENAME: "com.linxz.streamlet",
-                    "BUGLY_APPID":"9a98782b65",
-                    JPUSH_PKGNAME : "com.linxz.streamlet",
-                    JPUSH_APPKEY : "e7cb3de1ac4457647f95e7cf",
-                    JPUSH_CHANNEL : "developer-default",
+                    "BUGLY_APPID"  : "9a98782b65",
+                    JPUSH_PKGNAME  : "com.linxz.streamlet",
+                    JPUSH_APPKEY   : "e7cb3de1ac4457647f95e7cf",
+                    JPUSH_CHANNEL  : "developer-default",
             ]
         }
-        Huawei{
+        Huawei {
             dimension "default"
             applicationId "com.linxz.streamlet"
             versionName "V1.1.0.0"
@@ -73,13 +79,13 @@ android {
             buildConfigField "boolean", "IS_MINE", 'false'
             manifestPlaceholders = [
                     APP_PACKAGENAME: "com.linxz.streamlet",
-                    "BUGLY_APPID":"9a98782b65",
-                    JPUSH_PKGNAME : "com.linxz.streamlet",
-                    JPUSH_APPKEY : "e7cb3de1ac4457647f95e7cf",
-                    JPUSH_CHANNEL : "developer-default",
+                    "BUGLY_APPID"  : "9a98782b65",
+                    JPUSH_PKGNAME  : "com.linxz.streamlet",
+                    JPUSH_APPKEY   : "e7cb3de1ac4457647f95e7cf",
+                    JPUSH_CHANNEL  : "developer-default",
             ]
         }
-        Xiaomi{
+        Xiaomi {
             dimension "default"
             applicationId "com.linxz.streamlet"
             versionName "V1.1.0.0"
@@ -87,26 +93,40 @@ android {
             buildConfigField "boolean", "IS_MINE", 'false'
             manifestPlaceholders = [
                     APP_PACKAGENAME: "com.linxz.streamlet",
-                    "BUGLY_APPID":"9a98782b65",
-                    JPUSH_PKGNAME : "com.linxz.streamlet",
-                    JPUSH_APPKEY : "e7cb3de1ac4457647f95e7cf",
-                    JPUSH_CHANNEL : "developer-default",
+                    "BUGLY_APPID"  : "9a98782b65",
+                    JPUSH_PKGNAME  : "com.linxz.streamlet",
+                    JPUSH_APPKEY   : "e7cb3de1ac4457647f95e7cf",
+                    JPUSH_CHANNEL  : "developer-default",
             ]
         }
 
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility "1.8"
+        targetCompatibility "1.8"
     }
 
 }
 
 dependencies {
+//    api "com.squareup.retrofit2:retrofit:2.3.0"
+    api "com.squareup.retrofit2:converter-gson:2.3.0"
+    api "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
+
+// OkHttp3
+    api "com.squareup.okhttp3:okhttp:3.10.0"
+
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation project(path: ':libcompiler')
+    implementation project(path: ':libapp')
+    implementation project(path: ':libapp2')
+    implementation project(path: ':libappbase')
+    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
@@ -122,6 +142,25 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7-mpp-dev-11'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7-mpp-dev-11'
     api project(path: ':libNet')
+    implementation 'org.greenrobot:eventbus:3.2.0'
+
+    //debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+
+    //jetpack
+    implementation 'androidx.appcompat:appcompat:1.1.0-beta01'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-alpha01'
+    implementation 'com.android.support:design:28.0.0'
+
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    //
+
+   implementation project(path: ':streamlet-utils')
+    //implementation 'com.linxz.android:streamlet-utils:1.0.0@aar'
+
 
 }
 
@@ -132,7 +171,6 @@ configurations {
 
 
 println "common.gradle storeFile:${signConfigs.storeFile}"
-
 
 
 //将build中的apk拷贝出来
@@ -156,27 +194,26 @@ println "common.gradle storeFile:${signConfigs.storeFile}"
 //    }
 //}
 
-task('copyapk'){
+task('copyapk') {
     setGroup('linxz')
     //doLast在gradle中的执行阶段去执行
-    doLast{
-        def sourcePath=this.buildDir.path+'/outputs/apk'
-        def minePath='/Users/linxz/Desktop/打包/AndroidInterview'
-        def command="mv -f ${sourcePath} ${minePath}"
+    doLast {
+        def sourcePath = this.buildDir.path + '/outputs/apk'
+        def minePath = '/Users/linxz/Desktop/打包/AndroidInterview'
+        def command = "mv -f ${sourcePath} ${minePath}"
         println command
         //执行命令固定不变，改变的只有command
         exec {
-            try{
+            try {
                 executable 'bash'
                 args '-c', command
                 println 'the command is execute success'
-            }catch(GradleException e){
+            } catch (GradleException e) {
                 println 'the command is execute failed.'
             }
         }
     }
 }
-
 
 
 //task定义
@@ -186,25 +223,25 @@ task('copyapk'){
 //    println 'i am helloTask2'
 //}
 
-task helloTask{
+task helloTask {
     println 'i am helloTask'
 }
 
-task(helloTask2{
+task(helloTask2 {
     println 'i am helloTask2'
 })
 
 
-this.tasks.create(name:'helloTask3'){
+this.tasks.create(name: 'helloTask3') {
     println 'i am helloTask3'
 }
 
 //添加分组之后，在编译器后面的gradle的task中就能看到linxz这个文件夹，task放在里面
-task helloTask4(group:'linxz',description:'task study'){
+task helloTask4(group: 'linxz', description: 'task study') {
     println 'i am helloTask4'
 }
 
-this.tasks.create(name:'helloTask5'){
+this.tasks.create(name: 'helloTask5') {
     setGroup('linxz')
     setDescription('task')
     println 'i am helloTask5'
@@ -218,25 +255,25 @@ this.tasks.create(name:'helloTask5'){
         //
     }
 }
-helloTask5.doFirst{
+helloTask5.doFirst {
     println 'do first_ helloTask5'
 }
 
 
 //统计build时长
-def startBuildTime,endBuildTime
+def startBuildTime, endBuildTime
 this.afterEvaluate {
-    Project project->
-    //这个里面所有的task都准备好了，可以在这里面获取所有的task
-        def preBuildTask=project.tasks.getByName("preBuild")
+    Project project ->
+        //这个里面所有的task都准备好了，可以在这里面获取所有的task
+        def preBuildTask = project.tasks.getByName("preBuild")
         preBuildTask.doFirst {
-            startBuildTime=System.currentTimeMillis()
-            println 'the start time is:'+startBuildTime
+            startBuildTime = System.currentTimeMillis()
+            println 'the start time is:' + startBuildTime
         }
-        def buildTask=project.tasks.getByName('build')
+        def buildTask = project.tasks.getByName('build')
         buildTask.doLast {
-            endBuildTime=System.currentTimeMillis()
-            println "the build time is:${endBuildTime-startBuildTime}"
+            endBuildTime = System.currentTimeMillis()
+            println "the build time is:${endBuildTime - startBuildTime}"
         }
 
 }
@@ -258,16 +295,15 @@ this.afterEvaluate {
 //the build time is:4452   BUILD SUCCESSFUL in 6s 有差别是因为我这里的task只是执行阶段的，后面的时长有准备阶段的时间
 
 
-
 //task添加依赖
-task taskX{
-    doLast{
+task taskX {
+    doLast {
         println 'taskX'
     }
 }
 
-task taskY{
-    doLast{
+task taskY {
+    doLast {
         println 'taskY'
     }
 }
@@ -279,8 +315,8 @@ task taskY{
 //        println 'taskZ'
 //    }
 //}
-task taskZ(dependsOn:[taskX,taskY]){
-    doLast{
+task taskZ(dependsOn: [taskX, taskY]) {
+    doLast {
         println 'taskZ'
     }
 }
@@ -308,32 +344,32 @@ task taskZ(dependsOn:[taskX,taskY]){
 //}
 //gradle5.0版本<<操作符已经过时了，使用doLast
 
-task lib1{
-    doLast{
+task lib1 {
+    doLast {
         println 'lib1'
     }
 }
 
-task lib2{
-    doLast{
+task lib2 {
+    doLast {
         println 'lib2'
     }
 }
 
-task lib3{
-    doLast{
+task lib3 {
+    doLast {
         println 'lib3'
     }
 }
 
 //动态添加依赖
 
-task taskZz(dependsOn:[taskX,taskY]){
+task taskZz(dependsOn: [taskX, taskY]) {
     //动态添加依赖，依赖lib开头的task
-    dependsOn this.tasks.findAll { task->
+    dependsOn this.tasks.findAll { task ->
         return task.name.startsWith('lib')
     }
-    doLast{
+    doLast {
         println 'taskZz'
     }
 }
@@ -357,10 +393,6 @@ task taskZz(dependsOn:[taskX,taskY]){
 //执行阶段执行完毕
 
 
-
-
-
-
 //美团walle打包步骤二
 //并在当前App的 build.gradle 文件中apply这个插件，并添加上用于读取渠道号的arr包
 //apply plugin: 'walle'
@@ -376,3 +408,4 @@ task taskZz(dependsOn:[taskX,taskY]){
 //    // 渠道配置文件
 //    channelFile = new File("${project.getProjectDir()}/channel")
 //}
+

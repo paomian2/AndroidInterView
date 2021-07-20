@@ -23,6 +23,15 @@ public class HttpClientCreator {
     private volatile static HttpClientCreator creator;
 
     private HttpClientCreator(){
+//        try {
+//            OkHttpClient okHttpClient=new OkHttpClient();
+//          //  Call call= okHttpClient.newCall();
+//          //  call.enqueue();
+//           // call.execute();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
         RETROFIT =new Retrofit.Builder()
                 .baseUrl("https://api.github.com/")
                 .addConverterFactory(GsonConverterFactory.create())

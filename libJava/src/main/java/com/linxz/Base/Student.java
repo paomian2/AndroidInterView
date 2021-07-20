@@ -7,9 +7,12 @@ package com.linxz.Base;
  * 描述：
  */
 public class Student {
-    private int age;
+    public int age;
     public int getAge(){
         return age;
     }
     public void play(){}
+    public void setAge(int age){
+        this.age=age;
+    }
 }

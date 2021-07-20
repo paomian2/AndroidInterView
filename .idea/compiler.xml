@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="1.7">
+      <module name="AndroidInterView.app" target="1.8" />
+      <module name="AndroidInterView.libapp" target="1.8" />
+      <module name="AndroidInterView.libapp2" target="1.8" />
+      <module name="AndroidInterView.libappbase" target="1.8" />
+      <module name="AndroidInterView.libcompiler" target="1.8" />
+      <module name="AndroidInterView.libJava" target="1.8" />
+      <module name="AndroidInterView.libNet" target="1.8" />
+      <module name="AndroidInterView.streamlet-utils" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

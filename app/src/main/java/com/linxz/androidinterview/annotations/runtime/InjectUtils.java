@@ -15,6 +15,10 @@ import java.lang.reflect.Proxy;
  */
 public class InjectUtils {
 
+    public static void injectObj(Object o){
+        autoNewInstance(o);
+    }
+
     public static void inject(Activity activity){
         injectActivityContentView(activity);
         injectView(activity);
@@ -178,6 +182,36 @@ public class InjectUtils {
                 return injectMethod.invoke(object,args);
             }
             return null;
+        }
+    }
+
+
+
+    private static void autoNewInstance(Object obj){
+        Class<?> clazz=obj.getClass();
+        //根据class类信息获取该类的全部全局变量
+        Field[] fields=clazz.getDeclaredFields();//getDeclaredField获取全部的，getFields只能获取公有的
+        for (Field field:fields){
+            //获取标在变量上的注解的值
+            Autowired autowired=field.getAnnotation(Autowired.class);
+            if (autowired==null)
+                continue;
+            try {
+                String typeName=field.getType().getTypeName();
+                Class mFirstClz=Class.forName(typeName);
+                field.set(obj,mFirstClz.newInstance());
+
+                //获取activity的方法
+//                Method findByIdMethod=clazz.getMethod("findViewById",int.class);
+//                findByIdMethod.setAccessible(true);
+//                field.setAccessible(true);
+//                //执行findViewById方法
+//                Object viewObject=findByIdMethod.invoke(activity,viewId);
+//                //变量赋值
+//                field.set(activity,viewObject);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }

@@ -1,0 +1,67 @@
+1.Service.
+Android四大组件之一。一种长时间处于后台，不需要用户交互的应用组件。服务可以在其他应用组件启动，如Activity。
+启动它的组件销毁也不会影响到它。组件Activity可以绑定到服务中进行交互，甚至进行进程间通信(IPC).
+启动方式：
+starService:  onCreate->onStartCommand(onStart方法在API 5时被废弃)->running->onDestroy
+bindService:  onCreate->onStart->onBind->running(reBind)->unnBind->onDestroy
+
+内存优化中，尽量使用IntentService,因为Service跟启动它的组件生命周期不影响，导致容易忘记关闭Service.
+ANR:Activity(5s闪退),广播(10s),Service(20s)
+
+既使用startService又使用bindService的情况
+如果一个Service又被启动又被绑定，则该Service会一直在后台运行。首先不管如何调用，onCreate始终只会调用一次。
+对应startService调用多少次，Service的onStart方法便会调用多少次。
+Service的终止，需要unbindService和stopService同时调用才行。
+不管startService与bindService的调用顺序，如果先调用unbindService，此时服务不会自动终止，再调用stopService之后，服务才会终止；
+如果先调用stopService，此时服务也不会终止，而再调用unbindService或者之前调用bindService的Context不存在了（如Activity被finish的时候）之后，服务才会自动停止。
+
+
+那么，什么情况下既使用startService，又使用bindService呢？
+如果你只是想要启动一个后台服务长期进行某项任务，那么使用startService便可以了。
+如果你还想要与正在运行的Service取得联系，那么有两种方法：
+一种是使用broadcast，另一种是使用bindService。
+前者的缺点是如果交流较为频繁，容易造成性能上的问题，而后者则没有这些问题。因此，这种情况就需要startService和bindService一起使用了。
+
+
+如果你的服务只是公开一个远程接口，供连接上的客户端（Android的Service是C/S架构）远程调用执行方法，这个时候你可以不让服务一开始就运行，
+而只是bindService，这样在第一次bindService的时候才会创建服务的实例运行它，这会节约很多系统资源，
+特别是如果你的服务是远程服务，那么效果会越明显（当然在Servcie创建的是偶会花去一定时间，这点需要注意）。 
+
+
+本地服务与远程服务
+本地服务依附在主进程上，在一定程度上节约了资源。本地服务因为是在同一进程，因此不需要IPC，也不需要AIDL。
+相应bindService会方便很多。缺点是主进程被kill后，服务变会终止。
+
+
+Service保活：
+1.onStartCommand:
+  START_STICKY:内存不足杀死后重建，intent为空
+  START_NOT_STICKY:内存不足杀死后不重建(最安全)
+  START_REDELIVER_INTENT:内存不足杀死重建，取最后一次intent
+2.提高Service优先级，xml中配置android:priority="100"
+3.提高Service优先级，启动前台服务
+4.Service走onDestroy的时候发送广播重启服务
+5.双线程守护
+6.JobService开启轮询
+7.wakeLock熄屏保活
+
+
+
+Activity考点：
+1.生命周期
+2.启动模式
+3.启动过程
+
+
+
+
+
+
+onClick与onLongClick的执行条件
+
+蓝牙、协程、屏幕适配、Handler。
+
+
+getApplication();
+getApplicationContext();
+是同一个东西吗

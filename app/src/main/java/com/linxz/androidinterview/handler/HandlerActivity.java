@@ -48,6 +48,21 @@ public class HandlerActivity extends AppCompatActivity {
                new ThreadHandlerExcutor();
             }
         });
+
+        mSafeHandler.post(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
+
+        mSafeHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        },2000);
+
     }
 
 

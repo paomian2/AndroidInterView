@@ -142,7 +142,7 @@ public class BST<E extends Comparable<E>> {
         //遍历左子树
         queryList(node.left,list);
         //结点
-        System.out.println(node.e);
+
         list.add(node.e);
         //遍历右子树
         queryList(node.right,list);

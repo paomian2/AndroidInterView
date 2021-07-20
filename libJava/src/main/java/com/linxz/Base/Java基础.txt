@@ -229,9 +229,21 @@ finalize:是Object类的一个方法，在垃圾收集器执行的时候会调�
 
 
 String和StringBuilder、StringBuffer的区别
-String 是 final 类，不能被继承。对于已经存在的 Stirng 对象，修改它的值，就是重新创建一个对象
+String 是 final 类，不能被继承。对于已经存在的 String 对象，修改它的值，就是重新创建一个对象
 StringBuffer 是一个类似于 String 的字符串缓冲区，使用 append() 方法修改 Stringbuffer 的值，使用 toString() 方法转换为字符串，是线程安全的
 StringBuilder 用来替代于 StringBuffer，StringBuilder 是非线程安全的，速度更快
+
+    public synchronized StringBuffer append(String var1) {
+        this.toStringCache = null;
+        super.append(var1);
+        return this;
+    }
+    public StringBuilder append(String var1) {
+         super.append(var1);
+         return this;
+     }
+
+
 
 
 匿名内部类简单介绍
@@ -476,3 +488,44 @@ Retention:表示是编译类型,运行的时候编译、生成对应的.class文
 public @interface StudyAnnotation {
 
 }
+
+
+
+线程五种状态：创建、就绪、阻塞(某种原因暂时让出了CUP资源，如调用sleep、wait、join)、运行、终止(stop方法弃用了，执行完run方法终止)。
+创建线程的方式：
+1.直接new Thread().start(),或者类集成Thread,直接使用内部的runnable.
+2.创建类并实现Runnable,创建Thread类，并共同使用同一个Runnable.(多线程共享一个ticket)
+eg:(方式一卖了25张票，方式二卖了5张票，两者的顺序都是乱的)
+    public static class MyThreadRunnable implements Runnable{
+        private int ticket=5;
+
+        @Override
+        public void run() {
+            while (ticket>0){
+                ticket--;
+                System.out.println("卖了一张票，还剩"+ticket+"张");
+            }
+        }
+    }
+
+
+    public static class MyThread2 extends Thread{
+        private int ticket=5;
+        private String name;
+        public MyThread2(String name){
+            this.name=name;
+        }
+        @Override
+        public void run() {
+            while (ticket>0){
+                ticket--;
+                System.out.println(name+"卖了一张票，还剩"+ticket+"张");
+
+            }
+        }
+    }
+
+
+设置守护线程，创建Thread,setDaemon(true),start().
+
+Thread.yield() 方法，使当前线程由执行状态，变成为就绪状态，让出cpu时间，在下一个线程执行时候，此线程有可能被执行，也有可能没有被执行。
