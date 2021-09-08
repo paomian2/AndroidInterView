@@ -1,7 +1,6 @@
 package com.linxz.letcode.Sum;
 
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author Linxz
@@ -9,7 +8,7 @@ import java.util.Map;
  * version：v4.5.4
  * 描述：
  */
-public class 两数之和 {
+public class S_1_两数之和 {
 
     //给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
     //
@@ -26,7 +25,7 @@ public class 两数之和 {
 
 
     public static void main(String[] args) {
-        两数之和 solution=new 两数之和();
+        S_1_两数之和 solution=new S_1_两数之和();
         int[] nums={2, 7, 11, 15};
         int target=9;
         int[] ret=solution.twoSum(nums,target);

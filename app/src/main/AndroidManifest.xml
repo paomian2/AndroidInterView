@@ -67,21 +67,17 @@
 
         </activity>
         <activity android:name=".mvvm.ShareActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name="com.linxz.androidinterview.fragmets.FragmentHomeActivity">
         </activity>
         <activity android:name=".activitys.LifecycleActivityHome">
+        </activity>
+        <activity android:name=".mvvm.DataBindingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 

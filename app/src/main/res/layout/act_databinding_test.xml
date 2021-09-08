@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="HardcodedText">
+
+    <data>
+        <import type="com.linxz.androidinterview.mvvm.DataBindingBean"/>
+        <variable
+            name="user"
+            type="DataBindingBean" />
+
+        <import type="com.linxz.androidinterview.mvvm.EventHandlers"/>
+        <variable
+            name="evenHandlers"
+            type="EventHandlers" />
+    </data>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="@{user.userName}"
+            android:hint="用户名"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <Button
+            android:id="@+id/btnUpdate"
+            android:text="不带参数点击事件"
+            android:onClick="@{evenHandlers::onUpdate}"
+            android:layout_width="300dp"
+            android:layout_height="45dp"/>
+
+        <Button
+            android:id="@+id/btnUpdate2"
+            android:text="不带参数点击事件"
+            android:onClick="@{()-> evenHandlers.onUpdate2(user.userName)}"
+            android:layout_width="300dp"
+            android:layout_height="45dp"/>
+
+
+        <!--        <ImageView-->
+<!--            app:imageUrl="@{user.avatar}"-->
+<!--            android:layout_width="90dp"-->
+<!--            android:layout_height="90dp"/>-->
+    </LinearLayout>
+
+
+</layout>

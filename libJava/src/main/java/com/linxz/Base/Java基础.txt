@@ -529,3 +529,13 @@ eg:(方式一卖了25张票，方式二卖了5张票，两者的顺序都是乱�
 设置守护线程，创建Thread,setDaemon(true),start().
 
 Thread.yield() 方法，使当前线程由执行状态，变成为就绪状态，让出cpu时间，在下一个线程执行时候，此线程有可能被执行，也有可能没有被执行。
+
+
+创建对象的方式：https://www.cnblogs.com/wxd0108/p/5685817.html
+1.new FirstClass1(); (调用了构造函数)
+2.FirstClass1.class.mFirstClz.newInstance();（调用了构造函数）
+3.(FirstClass1)Class.forName("com.streamlet.reflex.FirstClass1").newInstance(); （调用了构造函数）
+4.FirstClass1.class.getConstructor().newInstance() （调用了构造函数）
+5.clone方法:FirstClass1 clz1= new FirstClass1(); FirstClass1 clz2 = clz1.clone(); （没调用构造函数）
+6.反序列化:ObjectInputStream in = new ObjectInputStream(new FileInputStream("data.obj")); FirstClass1 emp5 = (FirstClass1) in.readObject(); （没调用构造函数）
+7.使用Unsafe： FirstClass1 test = (FirstClass1) unSafe.allocateInstance(FirstClass1.class); （没调用构造函数）

@@ -1,0 +1,51 @@
+1.一个线程几个Handler
+2.一个线程几个Looper
+3.Handler内存泄露的原因？为什么其他内部类没有说过这个问题？
+4.为什么主线程可以new Handler？如果想要在子线程中new Handler要做什么准备？
+5.子线程中维护的Looper,消息队列无消息的时候处理的方案是什么？有什么用？
+6.既然可以存在多个Handler网MessageQueue中添加数据(Handler可能存在不同线程中)，那它内部是如何确保线程安全的？
+7.如何创建Message?
+8.Looper死循环为什么不会导致应用卡死ANR？
+
+
+同步消息：
+异步消息：
+next()里面获取：优先获取异步消息
+
+
+同步屏障：架构思维
+
+单车道：某一时刻只能通过一辆车(救护车怎么通过)
+消息队列某一时刻有20个消息(msg1...msg20)，第20非常重要，要立刻执行?如果去做?
+
+刷新UI的时候使用同步屏障：16ms左右刷新UI
+ViewRootImpl类中：
+    void scheduleTraversals() {
+        if (!mTraversalScheduled) {
+            mTraversalScheduled = true;
+            //方法里面没有走enqueueMessage,而是直接插入到队列中，没有给target赋值(发布同步屏障)
+            mTraversalBarrier = mHandler.getLooper().getQueue().postSyncBarrier();
+            //发送了一个消息，并且msg.setAsynchronous(true);将msg设置为异步消息。所有在消息队列列表获取消息的时候，遇到屏障消息能优先处理
+            mChoreographer.postCallback(
+                    Choreographer.CALLBACK_TRAVERSAL, mTraversalRunnable, null);
+            if (!mUnbufferedInputDispatch) {
+                scheduleConsumeBatchedInput();
+            }
+            notifyRendererOfFramePending();
+            pokeDrawLockIfNeeded();
+        }
+    }
+
+    void unscheduleTraversals() {
+        if (mTraversalScheduled) {
+            mTraversalScheduled = false;
+            //移除屏障消息
+            mHandler.getLooper().getQueue().removeSyncBarrier(mTraversalBarrier);
+            mChoreographer.removeCallbacks(
+                    Choreographer.CALLBACK_TRAVERSAL, mTraversalRunnable, null);
+        }
+    }
+
+
+
+01：18：40
